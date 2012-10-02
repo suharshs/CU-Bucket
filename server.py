@@ -1,4 +1,5 @@
 import os
+import sys
 import logging
 import tornado.httpserver
 import tornado.ioloop
@@ -6,7 +7,9 @@ import tornado.web
 from tornado.options import options, define
 from handlers.index import *
 
-define("port", default=8888, help="run on the given port", type=int)
+PORT = sys.argv[1]
+
+define("port", default=PORT, help="run on the given port", type=int)
 define("debug", default=True, help="run tornado in debug mode", type=bool)
 
 
