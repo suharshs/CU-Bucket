@@ -6,6 +6,9 @@ class UserHandler(BaseHandler):
         info = {'username': username}
         self.render('user.html', info=info)
 
-        """ The idea here is that we will show all of the information if
-        username is equal to self.get_current_user()
-        otherwise we will show a limited view of the profile. """
+        if (self.get_current_user() == username):
+            # this is the user's personal page so we will show them all of the info
+            pass
+        else:
+            # public user page, not everything is shown
+            pass
