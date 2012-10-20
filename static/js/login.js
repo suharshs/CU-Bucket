@@ -16,6 +16,7 @@ $(document).ready(function() {
 				if (data['passed'] === 'true'){
 					window.location.replace(cur_url + "user/" + username_text);
 				} else if (data['passed'] === 'false'){
+					clear();
 					alert('Password Wrong');
 				}
 			}
@@ -26,4 +27,8 @@ $(document).ready(function() {
 function getCookie(name) {
     var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
     return r ? r[1] : undefined;
+}
+
+function clear(){
+	$('password').val('');
 }
