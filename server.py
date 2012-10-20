@@ -4,8 +4,12 @@ import logging
 import tornado.httpserver
 import tornado.ioloop
 import tornado.web
+from tornado.database import Connection
 from tornado.options import options, define
+
 from handlers.index import *
+from handlers.login import *
+from handlers.user import *
 
 PORT = sys.argv[1]
 
@@ -16,8 +20,13 @@ define("debug", default=True, help="run tornado in debug mode", type=bool)
 class Application(tornado.web.Application):
     def __init__(self):
 
+        self.db = Connection(host='localhost:3306', user='root', password='', database='cucket')  # will later need to change this for heroku
+        # in other files we can refer to this with self.application.db, maintains one db connection
+
         handlers = [
-            tornado.web.URLSpec(r'/', IndexHandler)
+            tornado.web.URLSpec(r'/', LoginHandler),
+            tornado.web.URLSpec(r'/login', LoginHandler),
+            tornado.web.URLSpec(r'/user/([a-zA-Z0-9-_]+)', UserHandler)
         ]
 
         current_dir = os.path.dirname(__file__)
@@ -26,7 +35,9 @@ class Application(tornado.web.Application):
             template_path=os.path.join(current_dir, 'templates'),
             static_path=os.path.join(current_dir, 'static'),
             debug=options.debug,
-            autoescape='xhtml_escape'
+            autoescape='xhtml_escape',
+            cookie_secret='Dxj43jWAKSag/JbQTmIbBWvpSlBkazj6YGo0A0mo5tyZkb4sTUvT3UH4GU9SXgFuy=',
+            xsrf_cookies='True'
         )
 
         super(Application, self).__init__(handlers, **settings)
