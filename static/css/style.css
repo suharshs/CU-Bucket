@@ -1,0 +1,77 @@
+@font-face {
+	font-family: Aller;
+	src: url('../fonts/Aller/Aller_Rg.ttf');
+}
+
+.box_login{
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	-khtml-border-radius:20px;
+	border-radius: 20px;
+	width: 300px;
+	height:380px;
+	display:block;
+	background-color:#ECEAE0;
+}
+.center{
+	position:absolute; 
+	top:0; 
+	bottom:0; 
+	left:0; 
+	right:0;
+	margin:auto;	
+}
+
+#username{
+	position:absolute;
+	margin-left:13%;
+	margin-bottom:120px;
+	bottom:0;
+}
+
+#password{
+	position:absolute;
+	margin-left:13%;
+	bottom:0;
+	margin-bottom: 80px;
+}
+
+#login_button{
+	position:absolute;
+	bottom:0;
+	right:0;
+	margin-right:8%;
+	margin-bottom:8%;
+
+}
+
+#new_user_button{
+	position:absolute;
+	bottom:0;
+	left:0;
+	margin-left:8%;
+	margin-bottom:8%;	
+}
+.center_horizontal{
+	position:absolute;
+	left:0;
+	right:0;
+	margin-left: auto;
+	margin-right:auto;
+}
+
+#login_icon{
+	top:10%;
+}
+
+.text_shadow{
+	bottom:0;
+	text-align:center;
+	margin-bottom:175px;
+	font-family:Aller;
+	font-size:28pt;
+	color:#bcbbb3 ;
+	text-shadow: 0px 1px 1px #fff;
+
+}
+
