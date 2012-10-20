@@ -4,7 +4,7 @@
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
 
-	<script type="text/javascript" src="../static/js/login.js" ></script>
+	<script type="text/javascript" src="../static/js/signup.js" ></script>
 	<link href="../static/css/bootstrap.css" rel="stylesheet">
 	<link href="../static/css/style.css" rel="stylesheet">
 	</head>
@@ -14,7 +14,7 @@
 				<img id ="login_icon" class="center_horizontal"src="../static/img/bucketIcon2.png"/>
 				<div class="text_shadow center_horizontal">CUCKET</div>
 				<form>
-					
+					{% module xsrf_form_html() %}
 					<input id="username" type="text" placeholder="Username"/>
 					<input id="password" type="password" placeholder="Password"/>
 					<button id="signup-button" type="button" class="btn btn-primary">Sign Up!</button>

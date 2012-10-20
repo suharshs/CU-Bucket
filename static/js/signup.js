@@ -2,10 +2,10 @@ $(document).ready(function() {
 	$('#signup-button').click(function(){
 		var username_text = $('#username').val(),
 			password_text = $('#password').val(),
-			cur_url = document.URL;
+			cur_url = window.location.host;
 		$.ajax({
 			type: 'POST',
-			url:  cur_url + 'login',
+			url:  '/signup',
 			data: {
 				username: username_text,
 				password: password_text,
@@ -14,9 +14,9 @@ $(document).ready(function() {
 			dataType: 'json',
 			success: function(data){
 				if (data['passed'] === 'true'){
-					window.location.replace(cur_url + "user/" + username_text);
+					window.location.replace("/user/" + username_text);
 				} else if (data['passed'] === 'false'){
-					alert('Password Wrong');
+					alert('Username is already taken');
 				}
 			}
 		});

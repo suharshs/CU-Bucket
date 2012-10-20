@@ -10,6 +10,7 @@ from tornado.options import options, define
 from handlers.index import *
 from handlers.login import *
 from handlers.user import *
+from handlers.signup import *
 
 PORT = sys.argv[1]
 
@@ -26,6 +27,8 @@ class Application(tornado.web.Application):
         handlers = [
             tornado.web.URLSpec(r'/', LoginHandler),
             tornado.web.URLSpec(r'/login', LoginHandler),
+            tornado.web.URLSpec(r'/logout', LogoutHandler),
+            tornado.web.URLSpec(r'/signup', SignupHandler),
             tornado.web.URLSpec(r'/user/([a-zA-Z0-9-_]+)', UserHandler)
         ]
 

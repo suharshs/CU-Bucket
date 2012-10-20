@@ -36,7 +36,7 @@
 	margin-bottom: 80px;
 }
 
-#login_button{
+#login-button{
 	position:absolute;
 	bottom:0;
 	right:0;
@@ -45,7 +45,7 @@
 
 }
 
-#new_user_button{
+#new-user-button{
 	position:absolute;
 	bottom:0;
 	left:0;

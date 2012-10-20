@@ -1,10 +1,18 @@
 <html>
     <head>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
         <title>{{ info['username'] }}</title>
     </head>
     <body>
         <h1>CU-Bucket</h1>
         <h2>{{ info['username'] }}'s HomePage</h2>
-    <h3> </h3>
+       <button id="logout-button" type="button">Logout</button>
     </body>
+    <script>
+    $(document).ready(function(){
+        $('#logout-button').click(function(){
+            window.location.replace('/logout');
+        });
+    });
+    </script>
 </html>

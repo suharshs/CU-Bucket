@@ -1,11 +1,10 @@
 $(document).ready(function() {
-	$('#login_button').click(function(){
+	$('#login-button').click(function(){
 		var username_text = $('#username').val(),
-			password_text = $('#password').val(),
-			cur_url = document.URL;
+			password_text = $('#password').val();
 		$.ajax({
 			type: 'POST',
-			url:  cur_url + 'login',
+			url:  '/login',
 			data: {
 				username: username_text,
 				password: password_text,
@@ -14,13 +13,17 @@ $(document).ready(function() {
 			dataType: 'json',
 			success: function(data){
 				if (data['passed'] === 'true'){
-					window.location.replace(cur_url + "user/" + username_text);
+					window.location.replace("/user/" + username_text);
 				} else if (data['passed'] === 'false'){
 					clear();
 					alert('Password Wrong');
 				}
 			}
 		});
+	});
+
+	$('#new-user-button').click(function(){
+		window.location.replace('/signup');
 	});
 });
 
