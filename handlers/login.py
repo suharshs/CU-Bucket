@@ -14,17 +14,13 @@ class LoginHandler(BaseHandler):
         username = self.get_argument('username', '')
         password = self.get_argument('password', '')
 
-        print username
-        print password
         auth = self.authenticate(username, password)
 
         if auth:
             self.set_secure_cookie('username', username)  # set the session
-            print "authorized"
             self.write(json.dumps({"passed": "true"}))
             self.finish()
         else:
-            print "not authorized"
             self.write(json.dumps({"passed": "false"}))
             self.finish()
 

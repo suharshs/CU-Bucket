@@ -3,7 +3,6 @@ $(document).ready(function() {
 		var username_text = $('#username').val(),
 			password_text = $('#password').val(),
 			cur_url = document.URL;
-		console.log(cur_url);
 		$.ajax({
 			type: 'POST',
 			url:  cur_url + 'login',
@@ -14,10 +13,7 @@ $(document).ready(function() {
 			},
 			dataType: 'json',
 			success: function(data){
-				console.log('here');
 				if (data['passed'] === 'true'){
-					console.log(cur_url);
-					console.log(cur_url + "user/" + username_text);
 					window.location.replace(cur_url + "user/" + username_text);
 				} else if (data['passed'] === 'false'){
 					alert('Password Wrong');
