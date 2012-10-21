@@ -8,18 +8,13 @@ import urlparse
 from tornado.database import Connection
 from tornado.options import options, define
 
-from handlers.index import *
 from handlers.login import *
 from handlers.user import *
 from handlers.signup import *
 from handlers.activity import *
 
-urlparse.uses_netloc.append('mysql')
-
 PORT = sys.argv[1]
-
 DATABASE_URL = sys.argv[2]
-url = urlparse.urlparse(DATABASE_URL)
 
 define("port", default=PORT, help="run on the given port", type=int)
 define("debug", default=True, help="run tornado in debug mode", type=bool)
@@ -29,7 +24,9 @@ class Application(tornado.web.Application):
     def __init__(self):
 
 
-        self.db = Connection(host=url.hostname, user=url.username, password=url.password, database=url.path[1:])  # will later need to change this for heroku
+        #url = urlparse.urlparse(DATABASE_URL)
+        #self.db = Connection(host=url.hostname, user=url.username, password=url.password, database=url.path[1:])
+        self.db = Connection(host="engr-cpanel-mysql.engr.illinois.edu", user="cubucket_root", password="cucket", database="cubucket_db")
         # in other files we can refer to this with self.application.db, maintains one db connection
 
         handlers = [

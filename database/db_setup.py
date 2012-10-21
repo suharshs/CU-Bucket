@@ -2,10 +2,11 @@ from tornado.database import Connection
 from urlparse import urlparse
 import sys
 # This file is a script that setups the database for cucket if the tables don't already exist
-DATABASE_URL = sys.argv[1]
-url = urlparse(DATABASE_URL)
 
-db = Connection(host=url.hostname, user=url.username, password=url.password, database=url.path[1:])
+#DATABASE_URL = sys.argv[1]
+#url = urlparse(DATABASE_URL)
+#db = Connection(host=url.hostname, user=url.username, password=url.password, database=url.path[1:])
+db = Connection(host="engr-cpanel-mysql.engr.illinois.edu", user="cubucket_root", password="cucket", database="cubucket_db")
 
 
 # Drop the existing tables
@@ -16,10 +17,7 @@ DROP TABLE IF EXISTS `category`;\
 DROP TABLE IF EXISTS `activity`;\
 DROP TABLE IF EXISTS `user`;\
 """
-try:
-    db.execute(sql)
-except:
-    print "error deleting tables"
+#db.execute(sql)
 
 
 # Create the User table
