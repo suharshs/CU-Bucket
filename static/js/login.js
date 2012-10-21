@@ -2,6 +2,10 @@ $(document).ready(function() {
 	$('#login-button').click(function(){
 		var username_text = $('#username').val(),
 			password_text = $('#password').val();
+		if (username_text === '' || password_text === ''){
+			alert('Must input username and password');
+		}
+
 		$.ajax({
 			type: 'POST',
 			url:  '/login',

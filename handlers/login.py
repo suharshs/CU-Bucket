@@ -1,4 +1,5 @@
 from base import BaseHandler
+from tornado import template
 import simplejson as json
 
 
