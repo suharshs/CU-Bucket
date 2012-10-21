@@ -13,6 +13,18 @@
 	display:block;
 	background-color:#ECEAE0;
 }
+
+
+.box_signup{
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	-khtml-border-radius:20px;
+	border-radius: 20px;
+	width: 300px;
+	height:420px;
+	display:block;
+	background-color:#ECEAE0;
+}
 .center{
 	position:absolute; 
 	top:0; 
@@ -22,21 +34,38 @@
 	margin:auto;	
 }
 
-#username{
+.username_login{
 	position:absolute;
 	margin-left:13%;
-	margin-bottom:120px;
-	bottom:0;
+	bottom:30%;
+	
 }
-
-#password{
+.username_signup{
 	position:absolute;
 	margin-left:13%;
-	bottom:0;
-	margin-bottom: 80px;
+	bottom:130px;
+	
 }
 
-#login-button{
+.password_login{
+	position:absolute;
+	margin-left:13%;
+	bottom:20%;
+}
+
+.password_signup{
+	position:absolute;
+	margin-left:13%;
+	bottom:95px;
+}
+
+.password_signup_check{
+	position:absolute;
+	margin-left:13%;
+	bottom:60px;	
+}
+
+.login-button{
 	position:absolute;
 	bottom:0;
 	right:0;
@@ -45,13 +74,22 @@
 
 }
 
-#new-user-button{
+.button-signup{
+	position:absolute;
+	bottom:0;
+	width:90px;
+	margin-bottom:25px;	
+}
+
+.new-user-button{
 	position:absolute;
 	bottom:0;
 	left:0;
 	margin-left:8%;
 	margin-bottom:8%;	
 }
+
+
 .center_horizontal{
 	position:absolute;
 	left:0;
@@ -60,11 +98,12 @@
 	margin-right:auto;
 }
 
+
 #login_icon{
 	top:10%;
 }
 
-.text_shadow{
+.login_text{
 	bottom:0;
 	text-align:center;
 	margin-bottom:175px;
@@ -72,6 +111,14 @@
 	font-size:28pt;
 	color:#bcbbb3 ;
 	text-shadow: 0 1px 1px #fff;
-
+}
+.signup_text{
+	bottom:0;
+	text-align:center;
+	margin-bottom:185px;
+	font-family:Aller;
+	font-size:28pt;
+	color:#bcbbb3 ;
+	text-shadow: 0 1px 1px #fff;
 }
 

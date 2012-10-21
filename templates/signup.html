@@ -3,21 +3,22 @@
 	<head>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
-
+	<script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
 	<script type="text/javascript" src="../static/js/signup.js" ></script>
 	<link href="../static/css/bootstrap.css" rel="stylesheet">
 	<link href="../static/css/style.css" rel="stylesheet">
 	</head>
 	<body>
-		<div class="container"> 
-			<div class="box_login center">
+		<div class="container">
+			<div class="box_signup center">
 				<img id ="login_icon" class="center_horizontal"src="../static/img/bucketIcon2.png"/>
-				<div class="text_shadow center_horizontal">CUCKET</div>
-				<form>
+				<div class="signup_text center_horizontal">Join</br></br>CUCKET</div>
+				<form id="form">
 					{% module xsrf_form_html() %}
-					<input id="username" type="text" placeholder="Username"/>
-					<input id="password" type="password" placeholder="Password"/>
-					<button id="signup-button" type="button" class="btn btn-primary">Sign Up!</button>
+					<input id="username" type="text" class="username_signup" placeholder="New Username"/>
+					<input id="password" type="password" class="password_signup" placeholder="New Password"/>
+					<input id="password_check" class ="password_signup_check" type="password" placeholder="Password Again" rel="tooltip" title="Password does not match"/>
+					<button id="signup-button" type="button" class="btn btn-primary button-signup center_horizontal disabled">Sign Up!</button>
 				</form>
 			</div>		
 		</div>
