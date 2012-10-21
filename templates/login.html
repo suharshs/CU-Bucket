@@ -12,13 +12,13 @@
 		<div class="container">
 			<div class="box_login center">
 				<img id ="login_icon" class="center_horizontal"src="../static/img/bucketIcon2.png"/>
-				<div class="text_shadow center_horizontal">CUCKET</div>
+				<div class="login_text center_horizontal">CUCKET</div>
 				<form>
 					{% module xsrf_form_html() %}
-					<input id="username" type="text" placeholder="Username"/>
-					<input id="password" type="password" placeholder="Password"/>
-					<button id="login-button" type="button" class="btn btn-primary">Login</button>
-					<button id="new-user-button" type="button" class="btn btn-info">New User</button>
+					<input id="username" class="username_login" type="text" placeholder="Username"/>
+					<input id="password" class="password_login" type="password" placeholder="Password"/>
+					<button id="login-button" type="button" class="btn btn-primary login-button">Login</button>
+					<button id="new-user-button" type="button" class="btn btn-info new-user-button">New User</button>
 				</form>
 			</div>		
 		</div>
