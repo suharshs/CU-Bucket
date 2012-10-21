@@ -1,8 +1,11 @@
 from tornado.database import Connection
-
+from urlparse import urlparse
+import sys
 # This file is a script that setups the database for cucket if the tables don't already exist
+DATABASE_URL = sys.argv[1]
+url = urlparse(DATABASE_URL)
 
-db = Connection(host='localhost:3306', user='root', password='', database='cucket')
+db = Connection(host=url.hostname, user=url.username, password=url.password, database=url.path[1:])
 
 # Create the User table
 sql = """CREATE TABLE IF NOT EXISTS User(\

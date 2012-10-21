@@ -14,6 +14,11 @@ from handlers.signup import *
 
 PORT = sys.argv[1]
 
+DATABASE_URL = sys.argv[2]
+url = urlparse(DATABASE_URL)
+
+db = Connection(host=url.hostname, user=url.username, password=url.password, database=url.path[1:])
+
 define("port", default=PORT, help="run on the given port", type=int)
 define("debug", default=True, help="run tornado in debug mode", type=bool)
 
