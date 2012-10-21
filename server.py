@@ -13,7 +13,7 @@ from handlers.login import *
 from handlers.user import *
 from handlers.signup import *
 
-urlparse.uses_netloc.append('mysql')
+uses_netloc.append('mysql')
 
 PORT = sys.argv[1]
 
