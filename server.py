@@ -4,6 +4,7 @@ import logging
 import tornado.httpserver
 import tornado.ioloop
 import tornado.web
+from urlparse import urlparse
 from tornado.database import Connection
 from tornado.options import options, define
 
