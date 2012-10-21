@@ -12,13 +12,13 @@ from handlers.index import *
 from handlers.login import *
 from handlers.user import *
 from handlers.signup import *
+from handlers.activity import *
 
 urlparse.uses_netloc.append('mysql')
 
 PORT = sys.argv[1]
 
 DATABASE_URL = sys.argv[2]
-print DATABASE_URL
 url = urlparse.urlparse(DATABASE_URL)
 
 define("port", default=PORT, help="run on the given port", type=int)
@@ -28,6 +28,7 @@ define("debug", default=True, help="run tornado in debug mode", type=bool)
 class Application(tornado.web.Application):
     def __init__(self):
 
+
         self.db = Connection(host=url.hostname, user=url.username, password=url.password, database=url.path[1:])  # will later need to change this for heroku
         # in other files we can refer to this with self.application.db, maintains one db connection
 
@@ -36,6 +37,7 @@ class Application(tornado.web.Application):
             tornado.web.URLSpec(r'/login', LoginHandler),
             tornado.web.URLSpec(r'/logout', LogoutHandler),
             tornado.web.URLSpec(r'/signup', SignupHandler),
+            tornado.web.URLSpec(r'/activity/new', ActivityHandler),
             tornado.web.URLSpec(r'/user/([a-zA-Z0-9-_]+)', UserHandler)
         ]
 

@@ -7,6 +7,21 @@ url = urlparse(DATABASE_URL)
 
 db = Connection(host=url.hostname, user=url.username, password=url.password, database=url.path[1:])
 
+
+# Drop the existing tables
+sql = """\
+DROP TABLE IF EXISTS `usercompleted`;\
+DROP TABLE IF EXISTS `userinterest`;\
+DROP TABLE IF EXISTS `category`;\
+DROP TABLE IF EXISTS `activity`;\
+DROP TABLE IF EXISTS `user`;\
+"""
+try:
+    db.execute(sql)
+except:
+    print "error deleting tables"
+
+
 # Create the User table
 sql = """CREATE TABLE IF NOT EXISTS User(\
     name varchar(15) NOT NULL PRIMARY KEY,\
@@ -16,7 +31,7 @@ db.execute(sql)
 
 # Create the Activity table
 sql = """CREATE TABLE IF NOT EXISTS Activity(\
-    ID int NOT NULL PRIMARY KEY,\
+    ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,\
     name varchar(100) NOT NULL,\
     description varchar(500),\
     ranking int NOT NULL,\

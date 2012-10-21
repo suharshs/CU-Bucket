@@ -1,0 +1,5 @@
+host= us-cdbr-east-02.cleardb.com 
+user= bb3552af18762f 
+password= 33a8f702 
+database= heroku_c75d7e1c93251e5
+
