@@ -21,8 +21,6 @@ DATABASE_URL = sys.argv[2]
 print DATABASE_URL
 url = urlparse.urlparse(DATABASE_URL)
 
-db = Connection(host=url.hostname, user=url.username, password=url.password, database=url.path[1:])
-
 define("port", default=PORT, help="run on the given port", type=int)
 define("debug", default=True, help="run tornado in debug mode", type=bool)
 
@@ -30,7 +28,7 @@ define("debug", default=True, help="run tornado in debug mode", type=bool)
 class Application(tornado.web.Application):
     def __init__(self):
 
-        self.db = Connection(host='localhost:3306', user='root', password='', database='cucket')  # will later need to change this for heroku
+        self.db = Connection(host=url.hostname, user=url.username, password=url.password, database=url.path[1:])  # will later need to change this for heroku
         # in other files we can refer to this with self.application.db, maintains one db connection
 
         handlers = [
