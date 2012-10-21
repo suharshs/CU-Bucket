@@ -4,7 +4,7 @@ import logging
 import tornado.httpserver
 import tornado.ioloop
 import tornado.web
-from urlparse import urlparse
+from urlparse import *
 from tornado.database import Connection
 from tornado.options import options, define
 
@@ -13,9 +13,12 @@ from handlers.login import *
 from handlers.user import *
 from handlers.signup import *
 
+urlparse.uses_netloc.append('mysql')
+
 PORT = sys.argv[1]
 
 DATABASE_URL = sys.argv[2]
+print DATABASE_URL
 url = urlparse(DATABASE_URL)
 
 db = Connection(host=url.hostname, user=url.username, password=url.password, database=url.path[1:])
