@@ -12,6 +12,7 @@ from handlers.login import *
 from handlers.user import *
 from handlers.signup import *
 from handlers.activity import *
+from handlers.home import *
 
 PORT = sys.argv[1]
 DATABASE_URL = sys.argv[2]
@@ -35,7 +36,8 @@ class Application(tornado.web.Application):
             tornado.web.URLSpec(r'/logout', LogoutHandler),
             tornado.web.URLSpec(r'/signup', SignupHandler),
             tornado.web.URLSpec(r'/activity/new', ActivityHandler),
-            tornado.web.URLSpec(r'/user/([a-zA-Z0-9-_]+)', UserHandler)
+            tornado.web.URLSpec(r'/user/([a-zA-Z0-9-_]+)', UserHandler),
+            tornado.web.URLSpec(r'/home', HomeHandler)
         ]
 
         current_dir = os.path.dirname(__file__)

@@ -122,3 +122,60 @@
 	text-shadow: 0 1px 1px #fff;
 }
 
+.overlap-fix{
+	margin-top: 70px;
+}
+
+.feed{
+/*	background-color: #FAFAFA;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	-khtml-border-radius:10px;
+	border-radius: 10px;*/
+
+
+}
+
+.activity{
+	position:relative;
+	background-color:#ECEAE0;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	-khtml-border-radius:5px;
+	border-radius: 5px;
+	padding:15px 10px;
+  	font-family: Aller;
+  	width:920px;
+  	
+
+}
+
+.location{
+	font-size:13px;
+	color:#63AA9C;	
+}
+
+.description{
+  	color:#221E1D;	
+	font-size:16px;
+}
+
+ 
+.hr {
+  border: none;
+  background-color: #fff;
+  color: #fff;
+  height: 1px;
+  margin: 15px 0px;
+}
+.add-to-my-bucket{
+	position:absolute;
+	right:0;
+	bottom:0;
+	top:0;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-right:15px;
+	width:40px;
+	height:40px;
+}

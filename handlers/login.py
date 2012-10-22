@@ -1,5 +1,4 @@
 from base import BaseHandler
-from tornado import template
 import simplejson as json
 
 
@@ -8,7 +7,8 @@ class LoginHandler(BaseHandler):
         if not self.get_current_user():
             self.render('login.html')
             return
-        self.redirect('/user/%s' % (self.get_current_user()))
+        #self.redirect('/user/%s' % (self.get_current_user()))
+        self.redirect('/home')
 
     def post(self):
         self.set_header("Content-Type", "application/json")

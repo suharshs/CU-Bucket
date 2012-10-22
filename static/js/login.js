@@ -17,7 +17,7 @@ $(document).ready(function() {
 			dataType: 'json',
 			success: function(data){
 				if (data['passed'] === 'true'){
-					window.location.replace("/user/" + username_text);
+					window.location.replace("/home");
 				} else if (data['passed'] === 'false'){
 					clear();
 					alert('Password Wrong');

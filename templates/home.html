@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+	<div class="container overlap-fix feed">
+		{%	for activity in results %}
+			<div class="activity">	
+				<div class="description">{{ activity['description']}}</div>
+				<div class="location">{{ activity['location']}}</div>	
+				<a href='#'><img src="../static/img/bucketIcon2.png" class="add-to-my-bucket" id="add-to-my-bucket"></a>
+			</div>
+			<div class="hr"></div>
+		{% end %}
+	</div>
+{% end %}
