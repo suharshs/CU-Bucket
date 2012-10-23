@@ -17,9 +17,9 @@
                     <a class="brand" href="/">cucket</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="about">Search</a></li>
-                            <li><a href="contact">Contact</a></li>
+                            <li><a href="/user/">{{ info['username'] }}</a></li>
+                            <li><a href="/activities">Activities</a></li>
+                            <li><a href="/about">About</a></li>
                             <li><a id ="logout-button" href="#">Log Out</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
@@ -31,10 +31,20 @@
         {% block body %}
         Default Body
         {% end %}
+
+        <form id="new-activity">
+            {% module xsrf_form_html() %}
+            <input id="name" type="text" placeholder="Name"></input>
+            <input id="description" type="text"  rows='3' placeholder="Description"></input>
+            <input id="category" type="text" placeholder="Category"></input>
+            <input id="location" type="text" placeholder="Location"></input>
+            <button id="submit" type="button" class="btn btn-primary">Submit your activity</button>
+        </form>
     </body>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../static/js/logout.js"></script>
+    <script type="text/javascript" src="../static/js/base.js"></script>
     {% block scripts %}
     {% end %}
 </html>

@@ -24,7 +24,6 @@ define("debug", default=True, help="run tornado in debug mode", type=bool)
 class Application(tornado.web.Application):
     def __init__(self):
 
-
         #url = urlparse.urlparse(DATABASE_URL)
         #self.db = Connection(host=url.hostname, user=url.username, password=url.password, database=url.path[1:])
         self.db = Connection(host="engr-cpanel-mysql.engr.illinois.edu", user="cubucket_root", password="cucket", database="cubucket_db")
