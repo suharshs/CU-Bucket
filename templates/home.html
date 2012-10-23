@@ -2,7 +2,7 @@
 
 {% block body %}
 	<div class="container overlap-fix feed">
-		{%	for activity in results %}
+		{%	for activity in info['results'] %}
 			<div class="activity">	
 				<div class="description">{{ activity['description']}}</div>
 				<div class="location">{{ activity['location']}}</div>	

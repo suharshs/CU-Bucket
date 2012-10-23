@@ -32,17 +32,17 @@ $(document).ready(function() {
 
 		}else{
 			$('#password_check').popover('hide');
-			$('#signup-button').removeClass('disabled');	
+			$('#signup-button').removeClass('disabled');
 		}
-	});	
-	//password_checker function that compares the strings 
+	});
+	//password_checker function that compares the strings
 	var password_checker =function() {
 		var password=$('#password').val(),
 			password_again=$('#password_check').val();
-			if(password.length !=0 && password === password_again){
+			if(password.length !== 0 && password === password_again){
 				return true;
 			} else return false;
-	}
+	};
 
 });
 
