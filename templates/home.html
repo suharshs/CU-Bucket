@@ -8,7 +8,9 @@
 				<div class="description">{{ activity['description']}}</div>
 				<div class="location">{{ activity['location']}}</div>	
 				<div class="creator">by {{ activity['creator']}}</div>
+				{% if info['username'] == activity['creator'] %}
 				<img src="../static/img/close.png" class="delete-button" id="delete-button">
+				{% end %}
 				{% if info['username'] != activity['userName'] %}
 				<img src="../static/img/bucketIcon2.png" class="add-to-my-bucket" id="add-to-my-bucket">
 				{% end %}

@@ -22,19 +22,21 @@ $(document).ready(function(){
             datatype: 'json',
             success: function(data){
                 $('#activity-modal').modal('hide');
-                $('#activity-board').prepend(postMaker(name, description, location));
+                $('#activity-board').prepend(postMaker(data['results'][0]['ID'],name, description, location, data['results'][0]['creator']));
             }
         });
     });
 });
 
-function postMaker(name, description, location){
+function postMaker(id, name, description, location, creator){
     var postString =
-        ['<div class="activity">',
-        '<div class="description">' + description + '</div>',
-        '<div class="location">' + location + '</div>',
-        '<div class="name">by' + name + '</div>',
-        '<a href="/activity/add/""><img src="../static/img/bucketIcon2.png" class="add-to-my-bucket" id="add-to-my-bucket"></a>',
+        ['<div class="activity" id=' + id + '>',
+            '<div class="activity-name">' + name + '</div>',
+            '<div class="description">' + description + '</div>',
+            '<div class="location">' + location + '</div>',
+            '<div class="creator">by' + creator + '</div>',
+            '<img src="../static/img/close.png" class="delete-button" id="delete-button">',
+            '<img src="../static/img/bucketIcon2.png" class="add-to-my-bucket" id="add-to-my-bucket">',
         '</div>',
         '<div class="hr"></div>'].join('\n');
     return postString;

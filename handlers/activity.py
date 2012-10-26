@@ -19,8 +19,9 @@ class ActivityHandler(BaseHandler):
         sql = " INSERT INTO Activity (name, description, location, rating, creator) VALUES (\'%s\', \'%s\', \'%s\', 0, \'%s\') " % (name, description, location, self.get_current_user())
         self.application.db.execute(sql)
 
-        sql = " SELECT MAX(ID) FROM Activity "   # figure out the last id we input
-        id = self.application.db.query(sql)[0]['MAX(ID)']
+        sql = " SELECT * FROM Activity WHERE ID = (SELECT MAX(ID) FROM Activity)"   # figure out the last id we input
+        results = self.application.db.query(sql)
+        id = results[0]['ID']
         print 'id', id
 
         sql = " INSERT INTO Category (name, activityID) VALUES (\'%s\', %s) " % (category, id)
@@ -28,7 +29,10 @@ class ActivityHandler(BaseHandler):
 
         self.set_header("Content-Type", "application/json")
         was_successful = "true"
-        self.write(json.dumps({"passed": was_successful}))
+        info = {"passed": was_successful}
+        info['userName'] = self.get_current_user()
+        info['results'] = results
+        self.write(json.dumps(info))
         self.finish()
 
 
