@@ -1,15 +1,23 @@
 {% extends 'base.html' %}
 
 {% block body %}
-	<div class="container overlap-fix feed">
+	<div id="activity-board" class="container overlap-fix feed">
 		{%	for activity in info['results'] %}
-			<div class="activity">	
+			<div class="activity" id= {{ activity['ID'] }} >
+				<div class="activity-name">{{activity['name']}}</div>	
 				<div class="description">{{ activity['description']}}</div>
 				<div class="location">{{ activity['location']}}</div>	
-				<div class="name">by {{ activity['name']}}</div>
-				<a href='#'><img src="../static/img/bucketIcon2.png" class="add-to-my-bucket" id="add-to-my-bucket"></a>
+				<div class="creator">by {{ activity['creator']}}</div>
+				<img src="../static/img/close.png" class="delete-button" id="delete-button">
+				{% if info['username'] != activity['userName'] %}
+				<img src="../static/img/bucketIcon2.png" class="add-to-my-bucket" id="add-to-my-bucket">
+				{% end %}
 			</div>
 			<div class="hr"></div>
 		{% end %}
 	</div>
+{% end %}
+
+{% block scripts %}
+	<script type="text/javascript" src="../static/js/home.js"></script>
 {% end %}

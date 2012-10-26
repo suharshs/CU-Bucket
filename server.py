@@ -15,7 +15,6 @@ from handlers.activity import *
 from handlers.home import *
 
 PORT = sys.argv[1]
-DATABASE_URL = sys.argv[2]
 
 define("port", default=PORT, help="run on the given port", type=int)
 define("debug", default=True, help="run tornado in debug mode", type=bool)
@@ -35,8 +34,10 @@ class Application(tornado.web.Application):
             tornado.web.URLSpec(r'/logout', LogoutHandler),
             tornado.web.URLSpec(r'/signup', SignupHandler),
             tornado.web.URLSpec(r'/activity/new', ActivityHandler),
-            tornado.web.URLSpec(r'/user/([a-zA-Z0-9-_]+)', UserHandler),
-            tornado.web.URLSpec(r'/home', HomeHandler)
+            tornado.web.URLSpec(r'/user/([a-zA-Z0-9-_]*)', UserHandler),
+            tornado.web.URLSpec(r'/home', HomeHandler),
+            tornado.web.URLSpec(r'/activity/add/([0-9]+)', RatingHandler),
+            tornado.web.URLSpec(r'/activity/delete/([0-9]+)', DeleteActivityHandler)
         ]
 
         current_dir = os.path.dirname(__file__)

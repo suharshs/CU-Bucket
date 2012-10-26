@@ -2,8 +2,7 @@ $(document).ready(function() {
 	$('#signup-button').click(function(){
 		if(!$(this).hasClass('disabled')){
 			var username_text = $('#username').val(),
-				password_text = $('#password').val(),
-				cur_url = window.location.host;
+				password_text = $('#password').val();
 			$.ajax({
 				type: 'POST',
 				url:  '/signup',
@@ -37,8 +36,8 @@ $(document).ready(function() {
 	});
 	//password_checker function that compares the strings
 	var password_checker =function() {
-		var password=$('#password').val(),
-			password_again=$('#password_check').val();
+		var password = $('#password').val(),
+			password_again = $('#password_check').val();
 			if(password.length !== 0 && password === password_again){
 				return true;
 			} else return false;
@@ -50,5 +49,3 @@ function getCookie(name) {
     var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
     return r ? r[1] : undefined;
 }
-
-

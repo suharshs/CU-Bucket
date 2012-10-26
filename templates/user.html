@@ -6,16 +6,5 @@
     <body>
         <h1>CU-Bucket</h1>
         <h2>{{ info['username'] }}'s HomePage</h2>
-       <button id="logout-button" type="button">Logout</button>
     </body>
-{% end %}
-
-{% block scripts %}
-<script>
-    $(document).ready(function(){
-        $('#logout-button').click(function(){
-            window.location.replace('/logout');
-        });
-    });
-</script>
 {% end %}

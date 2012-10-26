@@ -150,6 +150,22 @@
 
 }
 
+.delete-button{
+	position:absolute;
+	right:0;
+	bottom:0;
+	top:0;
+	margin-top: 8px;
+	margin-bottom: auto;
+	margin-right:8px;
+	width:25px;
+	height:25px;
+}
+
+.delete-button:hover{
+	cursor: pointer;
+}
+
 .location{
 	font-size:13px;
 	color:#63AA9C;	
@@ -160,7 +176,12 @@
 }
 
 .description{
-  	color:#221E1D;	
+  	color:#63AA9C;	
+	font-size:13px;
+}
+
+.activity-name{
+	color:#221E1D;
 	font-size:16px;
 }
 
@@ -170,7 +191,7 @@
   background-color: #fff;
   color: #fff;
   height: 1px;
-  margin: 15px 0px;
+  margin: 15px 0;
 }
 .add-to-my-bucket{
 	position:absolute;
@@ -178,8 +199,12 @@
 	bottom:0;
 	top:0;
 	margin-top: auto;
-	margin-bottom: auto;
-	margin-right:15px;
-	width:40px;
-	height:40px;
+	margin-bottom: 8px;
+	margin-right:5px;
+	width:50px;
+	height:50px;
+}
+
+.add-to-my-bucket:hover{
+	cursor: pointer;
 }

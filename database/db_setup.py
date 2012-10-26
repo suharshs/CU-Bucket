@@ -32,7 +32,8 @@ sql = """CREATE TABLE IF NOT EXISTS Activity(\
     ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,\
     name varchar(100) NOT NULL,\
     description varchar(500),\
-    ranking int NOT NULL,\
+    creator varchar(15) NOT NULL,\
+    rating int NOT NULL,\
     location varchar(100)\
 );"""
 db.execute(sql)
