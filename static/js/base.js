@@ -1,6 +1,8 @@
 $(document).ready(function(){
     $("#new-activity #submit").click(function(){
         //validate if form is filled out
+        var formdata = $('#new-activity').serialize();
+
         var name = $('#name').val(),
             description = $('#description').val(),
             category = $('#category').val(),
@@ -12,13 +14,13 @@ $(document).ready(function(){
         $.ajax({
             type: 'POST',
             url:  '/activity/new',
-            data: {
+            data: formdata, /*{
                 name: name,
                 description: description,
                 category: category,
                 location: location,
                 _xsrf: getCookie("_xsrf")
-            },
+            }*/
             datatype: 'json',
             success: function(data){
                 $('#activity-modal').modal('hide');

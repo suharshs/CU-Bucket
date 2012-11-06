@@ -5,19 +5,17 @@ import sys
 
 #DATABASE_URL = sys.argv[1]
 #url = urlparse(DATABASE_URL)
+
 #db = Connection(host=url.hostname, user=url.username, password=url.password, database=url.path[1:])
-db = Connection(host="engr-cpanel-mysql.engr.illinois.edu", user="cubucket_root", password="cucket", database="cubucket_db")
+#db = Connection(host="engr-cpanel-mysql.engr.illinois.edu", user="cubucket_root", password="cucket", database="cubucket_db")
+db = Connection(host='localhost:3306', user='root', password='', database='cucket')  # will later need to change this for heroku
 
 
 # Drop the existing tables
-sql = """\
-DROP TABLE IF EXISTS `usercompleted`;\
-DROP TABLE IF EXISTS `userinterest`;\
-DROP TABLE IF EXISTS `category`;\
-DROP TABLE IF EXISTS `activity`;\
-DROP TABLE IF EXISTS `user`;\
-"""
-#db.execute(sql)
+tables = ['UserCompleted', 'UserInterest', 'Category', 'Activity', 'User']
+for table in tables:
+    sql = "DROP TABLE IF EXISTS `{0}`".format(table)
+    db.execute(sql)
 
 
 # Create the User table

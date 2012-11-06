@@ -23,10 +23,15 @@ define("debug", default=True, help="run tornado in debug mode", type=bool)
 class Application(tornado.web.Application):
     def __init__(self):
 
-        #url = urlparse.urlparse(DATABASE_URL)
-        #self.db = Connection(host=url.hostname, user=url.username, password=url.password, database=url.path[1:])
-        self.db = Connection(host="engr-cpanel-mysql.engr.illinois.edu", user="cubucket_root", password="cucket", database="cubucket_db")
-        # in other files we can refer to this with self.application.db, maintains one db connection
+
+        # refer to db with self.application.db, maintains one db connection
+
+        # cPanel mysql host
+        #self.db = Connection(host="engr-cpanel-mysql.engr.illinois.edu", user="cubucket_root", password="cucket", database="cubucket_db")
+
+        # local mysql host
+        self.db = Connection(host='localhost:3306', user='root', password='', database='cucket')  # will later need to change this for heroku
+        
 
         handlers = [
             tornado.web.URLSpec(r'/', LoginHandler),
