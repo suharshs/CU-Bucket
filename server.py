@@ -13,6 +13,7 @@ from handlers.user import *
 from handlers.signup import *
 from handlers.activity import *
 from handlers.home import *
+from handlers.about import *
 
 PORT = sys.argv[1]
 
@@ -38,6 +39,7 @@ class Application(tornado.web.Application):
             tornado.web.URLSpec(r'/login', LoginHandler),
             tornado.web.URLSpec(r'/logout', LogoutHandler),
             tornado.web.URLSpec(r'/signup', SignupHandler),
+            tornado.web.URLSpec(r'/about', AboutHandler),
             tornado.web.URLSpec(r'/activity/new', ActivityHandler),
             tornado.web.URLSpec(r'/user/([a-zA-Z0-9-_]*)', UserHandler),
             tornado.web.URLSpec(r'/home', HomeHandler),
