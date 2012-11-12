@@ -2,29 +2,15 @@ $(document).ready(function(){
     $("#new-activity #submit").click(function(){
         //validate if form is filled out
         var formdata = $('#new-activity').serialize();
-
-        var name = $('#name').val(),
-            description = $('#description').val(),
-            category = $('#category').val(),
-            location = $('#location').val();
-        //just for now, will need to make this validation better later
-        if (name === '' || description === '' || category === '' || location === ''){
-            alert("Need to fill in all of the fields");
-        }
         $.ajax({
             type: 'POST',
             url:  '/activity/new',
-            data: formdata, /*{
-                name: name,
-                description: description,
-                category: category,
-                location: location,
-                _xsrf: getCookie("_xsrf")
-            }*/
+            data: formdata, 
             datatype: 'json',
             success: function(data){
                 $('#activity-modal').modal('hide');
                 $('#activity-board').prepend(postMaker(data['results'][0]['ID'],name, description, location, data['results'][0]['creator']));
+                $('#new-activity')[0].reset();  // Reset all the fields of the form
             }
         });
     });
