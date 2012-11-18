@@ -1,6 +1,6 @@
 $(document).ready(function(){
     // create the function for the button rating
-    $("#add-to-my-bucket").click(function(){
+    $(".add-to-my-bucket").click(function(){
         var toRemove = $(this);
         console.log("click the add to my bucket button");
         $.ajax({
@@ -12,7 +12,7 @@ $(document).ready(function(){
         });
     });
 
-    $("#delete-button").click(function(){
+    $(".delete-button").click(function(){
         var toRemove = $(this).parent();
         console.log("click the close button");
         $.ajax({

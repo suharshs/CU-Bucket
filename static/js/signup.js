@@ -23,7 +23,7 @@ $(document).ready(function() {
 		}
 	});
 	//checks if the password match and applies apropriate styling
-	$('#password_check').keyup(function(){
+	$('#password_check, #password').keyup(function(){
 		//if password does not match password_check
 		if(!password_checker()){
 			$('#password_check').popover('show');
