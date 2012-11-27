@@ -28,7 +28,7 @@ def ld(a, b):
     if a[0] == b[0]:
         return lev_distance(a[1:], b[1:])  # In this case, this will be the minimum distance, since it adds no work
     # this takes care of obvious cases, now we just return the min LD of removing the last character from the a, b, or both.
-    return min(lev_distance(a, b[1:]) + 1, lev_distance(a[1:], b) + 1, lev_distance(a[1:], b[1:]) + 1)
+    return min(lev_distance(a, b[1:]), lev_distance(a[1:], b), lev_distance(a[1:], b[1:])) + 1
 
 
 def nearest_word(a, dictionary):
