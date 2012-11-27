@@ -9,12 +9,33 @@ $(document).ready(function(){
             datatype: 'json',
             success: function(data){
                 $('#activity-modal').modal('hide');
-                $('#activity-board').prepend(postMaker(data['results'][0]['ID'],name, description, location, data['results'][0]['creator']));
+
+
+                var form = $('#new-activity');
+                var vals = getFormValues(form);
+                $('#activity-board').prepend(
+                    postMaker(data['results'][0]['ID'], 
+                    vals.name, 
+                    vals.description, 
+                    vals.location, 
+                    data['results'][0]['creator']));
                 $('#new-activity')[0].reset();  // Reset all the fields of the form
             }
         });
     });
 });
+
+
+// Key-value pairs of the form inputs
+function getFormValues(form) {
+    var result = { };
+    $.each(form.serializeArray(), function() {
+        result[this.name] = this.value;
+    });
+    return result;
+}
+
+
 
 function postMaker(id, name, description, location, creator){
     var postString =
@@ -22,7 +43,7 @@ function postMaker(id, name, description, location, creator){
             '<div class="activity-name">' + name + '</div>',
             '<div class="description">' + description + '</div>',
             '<div class="location">' + location + '</div>',
-            '<div class="creator">by' + creator + '</div>',
+            '<div class="creator">by ' + creator + '</div>',
             '<img src="../static/img/close.png" class="delete-button" id="delete-button">',
             '<img src="../static/img/bucketIcon2.png" class="add-to-my-bucket" id="add-to-my-bucket">',
         '</div>',
