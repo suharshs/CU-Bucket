@@ -28,10 +28,10 @@ class Application(tornado.web.Application):
         # refer to db with self.application.db, maintains one db connection
 
         # cPanel mysql host
-        #self.db = Connection(host="engr-cpanel-mysql.engr.illinois.edu", user="cubucket_root", password="cucket", database="cubucket_db")
+        self.db = Connection(host="engr-cpanel-mysql.engr.illinois.edu", user="cubucket_root", password="cucket", database="cubucket_db")
 
         # local mysql host
-        self.db = Connection(host='localhost:3306', user='root', password='', database='cucket')  # will later need to change this for heroku
+        #self.db = Connection(host='localhost:3306', user='root', password='', database='cucket')  # will later need to change this for heroku
         
 
         handlers = [

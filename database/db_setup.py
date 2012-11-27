@@ -7,8 +7,8 @@ import sys
 #url = urlparse(DATABASE_URL)
 
 #db = Connection(host=url.hostname, user=url.username, password=url.password, database=url.path[1:])
-#db = Connection(host="engr-cpanel-mysql.engr.illinois.edu", user="cubucket_root", password="cucket", database="cubucket_db")
-db = Connection(host='localhost:3306', user='root', password='', database='cucket')  # will later need to change this for heroku
+db = Connection(host="engr-cpanel-mysql.engr.illinois.edu", user="cubucket_root", password="cucket", database="cubucket_db")
+#db = Connection(host='localhost:3306', user='root', password='', database='cucket')  # will later need to change this for heroku
 
 
 # Drop the existing tables
