@@ -8,18 +8,20 @@
         <h2>{{ info['username'] }}'s HomePage</h2>
 
         
-		{%	for activity in info['results'] %}
-			<div class="activity" id= {{ activity['ID'] }} >
-				<div class="activity-name">{{activity['name']}}</div>	
-				<div class="description">{{ activity['description']}}</div>
-				<div class="location">{{ activity['location']}}</div>	
-				<div class="creator">by {{ activity['creator']}}</div>
-				{% if info['username'] == activity['creator'] %}
-				<img src="../static/img/close.png" class="delete-button" id="delete-button">
-				{% end %}
-			</div>
-			<div class="hr"></div>
-		{% end %}
+        <div id="activity-board" class="container overlap-fix feed">
+            {%	for activity in info['results'] %}
+                <div class="activity" id= {{ activity['ID'] }} >
+                    <div class="activity-name">{{activity['name']}}</div>	
+                    <div class="description">{{ activity['description']}}</div>
+                    <div class="location">{{ activity['location']}}</div>	
+                    <div class="creator">by {{ activity['creator']}}</div>
+                    {% if info['username'] == activity['creator'] %}
+                    <img src="../static/img/close.png" class="delete-button" id="delete-button">
+                    {% end %}
+                </div>
+                <div class="hr"></div>
+            {% end %}
+        </div>
 
     </body>
 {% end %}
