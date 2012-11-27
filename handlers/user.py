@@ -9,17 +9,28 @@ class UserHandler(BaseHandler):
 
 
         username = self.get_current_user()
+        info = {}
 
+
+        # Get the activities created by the user
         sql = """
         SELECT * FROM Activity
         WHERE CREATOR = '{0}'
         ORDER BY Activity.ID DESC LIMIT 0, 20
         """.format(username)
-
-        print sql
-
-        info = {}
         info['results'] = self.application.db.query(sql)
+        
+
+        # Get the user's interests
+        sql = """
+        SELECT * FROM UserInterest ui
+        JOIN Activity act 
+        ON act.ID = ui.activityID
+        WHERE ui.userName = '{0}'
+        """.format(username)
+        info['interests'] = self.application.db.query(sql)
+
+
 
         if (self.get_current_user() == username or username == ''):
             info['username'] = self.get_current_user()

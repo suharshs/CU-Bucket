@@ -10,7 +10,6 @@ $(document).ready(function(){
             success: function(data){
                 $('#activity-modal').modal('hide');
 
-
                 var form = $('#new-activity');
                 var vals = getFormValues(form);
                 $('#activity-board').prepend(
