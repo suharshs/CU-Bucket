@@ -16,7 +16,8 @@ class ActivityHandler(BaseHandler):
         print 'category ', category
         print 'location ', location
 
-        sql = " INSERT INTO Activity (name, description, location, rating, creator) VALUES (\'%s\', \'%s\', \'%s\', 0, \'%s\') " % (name, description, location, self.get_current_user())
+        sql = """INSERT INTO Activity (name, description, location, rating, creator) 
+            VALUES ('{0}', '{1}', '{2}', 0, '{3}')""".format(name, description, location, self.get_current_user())
         self.application.db.execute(sql)
 
         sql = " SELECT * FROM Activity WHERE ID = (SELECT MAX(ID) FROM Activity)"   # figure out the last id we input
