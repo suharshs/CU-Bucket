@@ -5,16 +5,13 @@
 {% block body %}
     <body>
     	<div class="overlap-fix container">
-    	<h1>dasbld</h1>	
+    	<h1>Dashboard</h1>	
     	</div>
 
         
         <div class="row">
-            <!--
-            <div id="activity-board" class="span6 container overlap-fix feed">
-            -->
+            <h1>Created By You</h1>
             <div id="activity-board" class="span6">
-                <h1>Created By You</h1>
                 {%	for activity in info['results'] %}
                     <div class="activity" id= {{ activity['ID'] }} >
                         <div class="activity-name">{{activity['name']}}</div>	
@@ -29,8 +26,8 @@
                 {% end %}
             </div>
 
+            <h1>Your Bucket</h1>
             <div class="span6">
-                <h1>Your Bucket</h1>
                 {%	for activity in info['interests'] %}
                     <div class="activity" id= {{ activity['ID'] }} >
                         <div class="activity-name">{{activity['name']}}</div>	
