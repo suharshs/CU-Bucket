@@ -21,14 +21,19 @@ class UserHandler(BaseHandler):
         info['results'] = self.application.db.query(sql)
         
 
-        # Get the user's interests
+        # Get the user's bucket
         sql = """
         SELECT * FROM UserInterest ui
         JOIN Activity act 
         ON act.ID = ui.activityID
         WHERE ui.userName = '{0}'
         """.format(username)
-        info['interests'] = self.application.db.query(sql)
+        info['bucket'] = self.application.db.query(sql)
+
+
+
+        # TODO
+        info['recommendations'] = []
 
 
 

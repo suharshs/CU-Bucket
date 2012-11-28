@@ -9,53 +9,57 @@
         </div>
 
         
-        <div class="row">
-            <h1>Created By You</h1>
-            <div id="activity-board" class="span6">
-                {%  for activity in info['results'] %}
-                    <div class="activity" id= {{ activity['ID'] }} >
-                        <div class="activity-name">{{activity['name']}}</div>   
-                        <div class="description">{{ activity['description']}}</div>
-                        <div class="location">{{ activity['location']}}</div>   
-                        <div class="creator">by {{ activity['creator']}}</div>
-                        {% if info['username'] == activity['creator'] %}
-                        <img src="../static/img/close.png" class="delete-button" id="delete-button">
+        <div class="overlap-fix container">
+            <div class="row">
+                <div class="span6">
+                    <h1>Created By You</h1>
+                    <div id="activity-board">
+                        {%  for activity in info['results'] %}
+                            <div class="activity" id= {{ activity['ID'] }} >
+                                <div class="activity-name">{{activity['name']}}</div>   
+                                <div class="description">{{ activity['description']}}</div>
+                                <div class="location">{{ activity['location']}}</div>   
+                                <div class="creator">by {{ activity['creator']}}</div>
+                                {% if info['username'] == activity['creator'] %}
+                                <img src="../static/img/close.png" class="delete-button" id="delete-button">
+                                {% end %}
+                            </div>
+                            <div class="hr"></div>
                         {% end %}
                     </div>
-                    <div class="hr"></div>
-                {% end %}
-            </div>
+                </div>
 
 
-            <div class="span4">
-                <h1>Your Bucket</h1>
-                {%  for activity in info['results'] %}
+                <div class="span4">
+                    <h1>Your Bucket</h1>
+                    {%  for activity in info['bucket'] %}
 
-                    <div class="activity" id= {{ activity['ID'] }} >
-                        <div class="activity-name">{{activity['name']}}</div>   
-                        <div class="description">{{ activity['description']}}</div>
-                        <div class="location">{{ activity['location']}}</div>   
-                        <div class="creator">by {{ activity['creator']}}</div>
-                        {% if info['username'] == activity['creator'] %}
-                        <img src="../static/img/close.png" class="delete-button" id="delete-button">
-                        {% end %}
-                    </div>
-                    <div class="hr"></div>
-                {% end %}
-            </div>
+                        <div class="activity" id= {{ activity['ID'] }} >
+                            <div class="activity-name">{{activity['name']}}</div>   
+                            <div class="description">{{ activity['description']}}</div>
+                            <div class="location">{{ activity['location']}}</div>   
+                            <div class="creator">by {{ activity['creator']}}</div>
+                            {% if info['username'] == activity['creator'] %}
+                            <img src="../static/img/close.png" class="delete-button" id="delete-button">
+                            {% end %}
+                        </div>
+                        <div class="hr"></div>
+                    {% end %}
+                </div>
 
 
-            <div class="span4"
-                <h1>Recommended For You</h1>
-                {% for activity in info['interests'] %}
-                    <div class="category" id= {{ activity['ID'] }} >
-                        <div class="activity-name">{{activity['name']}}</div>   
-                        <div class="description">{{ activity['description']}}</div>
-                        <div class="location">{{ activity['location']}}</div>   
-                        <div class="creator">by {{ activity['creator']}}</div>
-                    </div>
-                    <div class="hr"></div>
-                {% end %}
+                <div class="span4"
+                    <h1>Recommended For You</h1>
+                    {% for activity in info['recommendations'] %}
+                        <div class="category" id= {{ activity['ID'] }} >
+                            <div class="activity-name">{{activity['name']}}</div>   
+                            <div class="description">{{ activity['description']}}</div>
+                            <div class="location">{{ activity['location']}}</div>   
+                            <div class="creator">by {{ activity['creator']}}</div>
+                        </div>
+                        <div class="hr"></div>
+                    {% end %}
+                </div>
             </div>
 
 
