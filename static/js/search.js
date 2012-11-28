@@ -38,7 +38,10 @@ $(document).ready(function(){
         }
     });
 
-    $("#searchInput").keyup(function(){
+    $("#searchInput").keyup(function(e){
+        if(e.keyCode== 38 || e.keyCode == 40 || e.keyCode == 13){
+            return;
+        }
         if(!$(this).val()){
             $('.suggestions').css('display', 'none');
             return;    

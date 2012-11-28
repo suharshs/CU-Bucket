@@ -232,7 +232,7 @@
 .searchInput{
 	position:absolute;
 	right: 20px;
-	z-index: 100000;
+	z-index: 1040;
 
 }
 
@@ -250,7 +250,7 @@
 }
 .suggestions{
 	position:absolute;
-	z-index: 3000000;
+	z-index: 1044;
 	width:220px;
 	background-color: white;
 	display:none;
@@ -267,6 +267,7 @@
     padding-top:5px;
     padding-bottom:5px;
 }
+
 
 
 /*.suggestionsinput {
