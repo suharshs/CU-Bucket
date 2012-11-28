@@ -31,10 +31,31 @@ class UserHandler(BaseHandler):
         info['bucket'] = self.application.db.query(sql)
 
 
+        # Recommendations
+        sql = """SELECT DISTINCT c.activityID AS 'ID', a.name, a.description, a.creator, a.rating, a.location
+        FROM 
+        (SELECT c.name, COUNT(c.activityID) AS 'activities'
+         FROM UserInterest ui
+        JOIN Activity a
+        ON a.ID = ui.activityID
+        JOIN Category c
+        ON a.ID = c.activityID
+        WHERE ui.userName = '{0}'
+        GROUP BY c.name
+        ORDER BY Count(c.activityID) DESC) bucket
 
-        # TODO
-        info['recommendations'] = []
+        JOIN Category c
+        ON c.name = bucket.name
 
+        JOIN Activity a 
+        ON a.ID = c.activityID
+
+        LEFT JOIN UserInterest ui
+        ON a.ID = ui.activityID
+
+        WHERE ui.userName IS NULL 
+        OR ui.userName != '{0}'""".format(username)
+        info['recommendations'] = self.application.db.query(sql)
 
 
         if (self.get_current_user() == username or username == ''):

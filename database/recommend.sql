@@ -48,10 +48,8 @@ ORDER BY COUNT(a.name) DESC
 
 
 
-
-
--- better?
-SELECT c.name AS 'category', bucket.activities, c.activityID, a.name, ui.userName
+-- This works! Selects in descending order by number of categories matched
+SELECT DISTINCT c.activityID AS 'ID', a.name, a.description, a.creator, a.rating, a.location
 FROM 
 (SELECT c.name, COUNT(c.activityID) AS 'activities'
  FROM UserInterest ui
@@ -74,4 +72,6 @@ ON a.ID = ui.activityID
 
 WHERE ui.userName IS NULL 
 OR ui.userName != 'martin'
+
+
 
