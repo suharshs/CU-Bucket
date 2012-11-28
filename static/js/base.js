@@ -5,7 +5,7 @@ $(document).ready(function(){
         $.ajax({
             type: 'POST',
             url:  '/activity/new',
-            data: formdata, 
+            data: formdata,
             datatype: 'json',
             success: function(data){
                 $('#activity-modal').modal('hide');
@@ -13,10 +13,10 @@ $(document).ready(function(){
                 var form = $('#new-activity');
                 var vals = getFormValues(form);
                 $('#activity-board').prepend(
-                    postMaker(data['results'][0]['ID'], 
-                    vals.name, 
-                    vals.description, 
-                    vals.location, 
+                    postMaker(data['results'][0]['ID'],
+                    vals.name,
+                    vals.description,
+                    vals.location,
                     data['results'][0]['creator']));
                 $('#new-activity')[0].reset();  // Reset all the fields of the form
             }

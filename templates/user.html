@@ -4,19 +4,19 @@
 
 {% block body %}
     <body>
-    	<div class="overlap-fix container">
-    	<h1>Dashboard</h1>	
-    	</div>
+        <div class="overlap-fix container">
+        <h1>Dashboard</h1>  
+        </div>
 
         
         <div class="row">
             <h1>Created By You</h1>
             <div id="activity-board" class="span6">
-                {%	for activity in info['results'] %}
+                {%  for activity in info['results'] %}
                     <div class="activity" id= {{ activity['ID'] }} >
-                        <div class="activity-name">{{activity['name']}}</div>	
+                        <div class="activity-name">{{activity['name']}}</div>   
                         <div class="description">{{ activity['description']}}</div>
-                        <div class="location">{{ activity['location']}}</div>	
+                        <div class="location">{{ activity['location']}}</div>   
                         <div class="creator">by {{ activity['creator']}}</div>
                         {% if info['username'] == activity['creator'] %}
                         <img src="../static/img/close.png" class="delete-button" id="delete-button">
@@ -26,13 +26,15 @@
                 {% end %}
             </div>
 
-            <h1>Your Bucket</h1>
-            <div class="span6">
-                {%	for activity in info['interests'] %}
+
+            <div class="span4">
+                <h1>Your Bucket</h1>
+                {%  for activity in info['results'] %}
+
                     <div class="activity" id= {{ activity['ID'] }} >
-                        <div class="activity-name">{{activity['name']}}</div>	
+                        <div class="activity-name">{{activity['name']}}</div>   
                         <div class="description">{{ activity['description']}}</div>
-                        <div class="location">{{ activity['location']}}</div>	
+                        <div class="location">{{ activity['location']}}</div>   
                         <div class="creator">by {{ activity['creator']}}</div>
                         {% if info['username'] == activity['creator'] %}
                         <img src="../static/img/close.png" class="delete-button" id="delete-button">
@@ -42,13 +44,23 @@
                 {% end %}
             </div>
 
-            <h1>Recommended for you:</h1>
-            <div>
-                nothing.
+
+            <div class="span4"
+                <h1>Recommended For You</h1>
+                {% for activity in info['interests'] %}
+                    <div class="category" id= {{ activity['ID'] }} >
+                        <div class="activity-name">{{activity['name']}}</div>   
+                        <div class="description">{{ activity['description']}}</div>
+                        <div class="location">{{ activity['location']}}</div>   
+                        <div class="creator">by {{ activity['creator']}}</div>
+                    </div>
+                    <div class="hr"></div>
+                {% end %}
             </div>
+
+
 
         </div>
 
     </body>
 {% end %}
-
