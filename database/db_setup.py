@@ -40,7 +40,7 @@ db.execute(sql)
 sql = """CREATE TABLE IF NOT EXISTS Category(\
     name varchar(100) NOT NULL,\
     activityID int NOT NULL,\
-    PRIMARY KEY (name, activityID), \
+    PRIMARY KEY (name, activityID),\
     FOREIGN KEY (activityID) REFERENCES Activity(ID)\
 );"""
 db.execute(sql)
