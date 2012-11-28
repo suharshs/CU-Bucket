@@ -14,6 +14,7 @@ from handlers.signup import *
 from handlers.activity import *
 from handlers.home import *
 from handlers.about import *
+from handlers.search import *
 
 PORT = sys.argv[1]
 
@@ -32,7 +33,6 @@ class Application(tornado.web.Application):
 
         # local mysql host
         #self.db = Connection(host='localhost:3306', user='root', password='', database='cucket')  # will later need to change this for heroku
-        
 
         handlers = [
             tornado.web.URLSpec(r'/', LoginHandler),
@@ -44,7 +44,8 @@ class Application(tornado.web.Application):
             tornado.web.URLSpec(r'/user/([a-zA-Z0-9-_]*)', UserHandler),
             tornado.web.URLSpec(r'/home', HomeHandler),
             tornado.web.URLSpec(r'/activity/add/([0-9]+)', RatingHandler),
-            tornado.web.URLSpec(r'/activity/delete/([0-9]+)', DeleteActivityHandler)
+            tornado.web.URLSpec(r'/activity/delete/([0-9]+)', DeleteActivityHandler),
+            tornado.web.URLSpec(r'/search', SearchHandler)
         ]
 
         current_dir = os.path.dirname(__file__)

@@ -36,10 +36,11 @@ def nearest_word(a, dictionary):
     Returns the word that is closest to the input word
     dicationary is a list of valid words
     """
+    len_a = len(a)
     best_choice = dictionary[0]
-    best_distance = lev_distance(a, best_choice)
+    best_distance = lev_distance(a, best_choice[:len_a])
     for word in dictionary[1:]:
-        distance = lev_distance(a, word)
+        distance = lev_distance(a, word[:len_a])
         if distance < best_distance:
             best_distance = distance
             best_choice = word
