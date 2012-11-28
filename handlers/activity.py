@@ -25,8 +25,11 @@ class ActivityHandler(BaseHandler):
         id = results[0]['ID']
         print 'id', id
 
-        sql = " INSERT INTO Category (name, activityID) VALUES (\'%s\', %s) " % (category, id)
-        self.application.db.execute(sql)
+        # whitespace-delimited category names
+        for catname in category.split():
+            sql = """INSERT INTO Category (name, activityID) 
+                VALUES (\'%s\', %s)""" % (catname, id)
+            self.application.db.execute(sql)
 
         self.set_header("Content-Type", "application/json")
         was_successful = "true"
