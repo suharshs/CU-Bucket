@@ -123,7 +123,7 @@
 }
 
 .overlap-fix{
-	margin-top: 70px;
+	margin-top: 40px;
 }
 
 .feed{
@@ -229,3 +229,61 @@
 	padding-top: 50px;
 }
 
+.searchInput{
+	position:absolute;
+	right: 20px;
+	z-index: 100000;
+
+}
+
+#searchInput{
+	margin-bottom: 0px;
+}
+
+.search{
+	margin-top: 5px;
+	position:absolute;
+	width:960px;
+	
+	
+
+}
+.suggestions{
+	position:absolute;
+	z-index: 3000000;
+	width:220px;
+	background-color: white;
+	display:none;
+}
+
+.suggestion_list{
+    list-style-type: none;
+    
+    margin: 0px;
+}
+
+.suggestion_list li{
+	padding-left:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+
+/*.suggestionsinput {
+font-size: 36px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border: 1px solid #999;
+color: #999;
+}
+
+#suggestions {
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+width: 460px;
+background-color: #999;
+position: fixed;
+padding: 5px;
+visibility: hidden;
+}
+*/

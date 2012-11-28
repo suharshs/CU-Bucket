@@ -22,12 +22,26 @@
                             <li><a href="/about">About</a></li>
                             <li><a id ="logout-button" href="/logout">Log Out</a></li>
                             <li><a id="show-activity-form" href="#activity-modal" role="button" data-toggle="modal">Add activity</a></li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
 
-                </div>
+                        </ul>
+                        
+                    </div><!--/.nav-collapse -->
+                 </div>
             </div>
         </div>
+        <div class="search center_horizontal">
+            <div class="searchInput">
+                <input type="text" id="searchInput" placeholder="Search..."/>
+                <div class="suggestions">
+                <ul class="suggestion_list">
+                    <li id="suggestion_1"><a href="#" id="suggestion_1_link" >Suggestion1</a></li>
+                    <li id="suggestion_2"><a href="#" id="suggestion_2_link">Suggestion2</a></li>
+                </ul>
+                </div> 
+            </div>
+            
+        </div>
+        
 
         <div class="body-down">
             {% block body %}
@@ -56,6 +70,7 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../static/js/base.js"></script>
+    <script type="text/javascript" src="../static/js/search.js"></script>
     {% block scripts %}
     {% end %}
 </html>
