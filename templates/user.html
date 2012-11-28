@@ -4,14 +4,9 @@
 
 {% block body %}
     <body>
-        <div class="overlap-fix container">
-        <h1>Dashboard</h1>  
-        </div>
-
-        
-        <div class="overlap-fix container">
-            <div class="row">
-                <div class="span6">
+        <div class="overlap-fix container-fluid">
+            <div class="row-fluid">
+                <div class="span4">
                     <h1>Created By You</h1>
                     <div id="activity-board">
                         {%  for activity in info['results'] %}
@@ -48,8 +43,8 @@
                 </div>
 
 
-                <div class="span4"
-                    <h1>Recommended For You</h1>
+                <div class="span4">
+                    <h1>Recommended</h1>
                     {% for activity in info['recommendations'] %}
                         <div class="category" id= {{ activity['ID'] }} >
                             <div class="activity-name">{{activity['name']}}</div>   
