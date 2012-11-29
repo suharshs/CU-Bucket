@@ -18,8 +18,8 @@ class UserHandler(BaseHandler):
         WHERE CREATOR = '{0}'
         ORDER BY Activity.ID DESC LIMIT 0, 20
         """.format(username)
-        info['results'] = self.application.db.query(sql)
-        
+        info['created'] = self.application.db.query(sql)
+
 
         # Get the user's bucket
         sql = """
@@ -29,7 +29,14 @@ class UserHandler(BaseHandler):
         WHERE ui.userName = '{0}'
         """.format(username)
         info['bucket'] = self.application.db.query(sql)
+<<<<<<< Updated upstream
+=======
 
+        info['recommendations'] = []  # this will have the pagerank results
+>>>>>>> Stashed changes
+
+        info['username'] = self.get_current_user()
+        self.render('user.html', info=info)
 
         # Recommendations
         sql = """SELECT DISTINCT c.activityID AS 'ID', a.name, a.description, a.creator, a.rating, a.location
@@ -58,6 +65,7 @@ class UserHandler(BaseHandler):
         info['recommendations'] = self.application.db.query(sql)
 
 
+        """
         if (self.get_current_user() == username or username == ''):
             info['username'] = self.get_current_user()
             self.render('user.html', info=info)
@@ -66,3 +74,4 @@ class UserHandler(BaseHandler):
         else:
             # public user page, not everything is shown
             pass
+        """
