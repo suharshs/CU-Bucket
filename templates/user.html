@@ -12,9 +12,8 @@
             <div class="span12">
                 <h1>Your Progress</h1>
                 <div class="progress">
-                        <div class="bar bar-success" style={{"width:"+str(info['bucket_count'])+"%;"}}></div>
-                        <div class="bar bar-danger" style={{"width:"+str(info['completed_count'])+"%;"}}></div>
-                    </div>
+                    <div class="bar bar-success" style={{"width:"+str(info['bucket_count'])+"%;"}}></div>
+                    <div class="bar bar-danger" style={{"width:"+str(info['completed_count'])+"%;"}}></div>
                 </div>
             </div>
         </div>
@@ -54,11 +53,14 @@
             <div class="span4">
                 <h1>Recommended</h1>
                 {% for activity in info['recommendations'] %}
-                    <div class="category" id= {{ activity['ID'] }} >
+                    <div class="activity" id= {{ activity['ID'] }} >
                         <div class="activity-name">{{activity['name']}}</div>   
                         <div class="description">{{ activity['description']}}</div>
                         <div class="location">{{ activity['location']}}</div>   
                         <div class="creator">by {{ activity['creator']}}</div>
+                        {% if info['username'] == activity['creator'] %}
+                        <img src="../static/img/close.png" class="delete-button" id="delete-button">
+                        {% end %}
                     </div>
                     <div class="hr"></div>
                 {% end %}

@@ -47,10 +47,7 @@ class UserHandler(BaseHandler):
         info['completed_count'] = min(len(info['completed']), 100)
         
 
-        info['recommendations'] = []  # this will have the pagerank results
 
-        info['username'] = self.get_current_user()
-        self.render('user.html', info=info)
 
         # Recommendations
         sql = """SELECT DISTINCT c.activityID AS 'ID', a.name, a.description, a.creator, a.rating, a.location
@@ -77,6 +74,11 @@ class UserHandler(BaseHandler):
         WHERE ui.userName IS NULL 
         OR ui.userName != '{0}'""".format(username)
         info['recommendations'] = self.application.db.query(sql)
+        print info['recommendations']
+
+
+        info['username'] = self.get_current_user()
+        self.render('user.html', info=info)
 
 
         """
