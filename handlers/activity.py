@@ -16,7 +16,7 @@ class ActivityHandler(BaseHandler):
         print 'category ', category
         print 'location ', location
 
-        sql = """INSERT INTO Activity (name, description, location, rating, creator) 
+        sql = """INSERT INTO Activity (name, description, location, rating, creator)
             VALUES ('{0}', '{1}', '{2}', 0, '{3}')""".format(name, description, location, self.get_current_user())
         self.application.db.execute(sql)
 
@@ -27,7 +27,7 @@ class ActivityHandler(BaseHandler):
 
         # whitespace-delimited category names
         for catname in category.split():
-            sql = """INSERT INTO Category (name, activityID) 
+            sql = """INSERT INTO Category (name, activityID)
                 VALUES (\'%s\', %s)""" % (catname, id)
             self.application.db.execute(sql)
 

@@ -286,6 +286,10 @@
 	height:50px;
 }
 
+.complete-activity:hover{
+	cursor: pointer;
+}
+
 
 
 /*.suggestionsinput {

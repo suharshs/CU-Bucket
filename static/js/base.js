@@ -39,14 +39,17 @@ $(document).ready(function(){
     });
 
     $(".complete-activity").live("click", function(){
-        var toChange = $(this);
-        console.log("click the add to my bucket button");
-        $.ajax({
-            type: 'GET',
-            url:  '/activity/complete/' + toChange.parent().attr('id'),
-            success: function(){
-            }
-        });
+        if (confirm("Confirm that you completed this activity. You break the honor code if you are lying.")){
+            var toChange = $(this);
+            console.log("click the add to my bucket button");
+            $.ajax({
+                type: 'GET',
+                url:  '/activity/complete/' + toChange.parent().attr('id'),
+                success: function(){
+                    toChange.remove();
+                }
+            });
+        }
     });
 
 

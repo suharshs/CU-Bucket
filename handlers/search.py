@@ -18,7 +18,7 @@ class SearchHandler(BaseHandler):
         """
         user_string = self.get_argument("user_string", "")
 
-        sql = "SELECT name FROM Activity"
+        sql = "SELECT name FROM Activity WHERE name LIKE \'%s%\'" % (user_string)
         results = self.application.db.query(sql)
 
         dictionary = []
