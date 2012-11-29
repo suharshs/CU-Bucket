@@ -44,13 +44,22 @@ class Trie:
             if letter in curr:
                 curr = curr[letter]
             else:
-                break
-                
+                return False  # Fallback on levenshtein
+        return map(lambda w: prefix + w, self.all_suffix(curr))
+
+    def all_suffix(self, curr):
+        cum_list = []
+        for key in curr.keys():
+            if key == "_leaf":
+                cum_list = cum_list + [""]
+            else:
+                cum_list = cum_list + map(lambda w: key + w, self.all_suffix(curr[key]))
+        return cum_list
 
 
 if __name__ == "__main__":
     trie = Trie()
-    trie.add_words("dog", "dogma")
+    trie.add_words("dog", "dogma", "dic")
     print trie.in_trie("dog")
     print trie.in_trie("dick")
     print trie.trie
@@ -60,3 +69,4 @@ if __name__ == "__main__":
     trie.remove_words("fish")
     print trie.trie
     print trie.in_trie("fish")
+    print trie.check_prefix("dog")

@@ -16,6 +16,8 @@ class ActivityHandler(BaseHandler):
         print 'category ', category
         print 'location ', location
 
+        self.application.trie.add_words(name)
+
         sql = """INSERT INTO Activity (name, description, location, rating, creator)
             VALUES ('{0}', '{1}', '{2}', 0, '{3}')""".format(name, description, location, self.get_current_user())
         self.application.db.execute(sql)
@@ -64,6 +66,8 @@ class CompleteActivityHandler(BaseHandler):
 
 class DeleteActivityHandler(BaseHandler):
     def get(self, id):
+        sql = "SELECT name FROM Activity WHERE ID = \'%s\'" % (id)
+        self.application.trie.remove_words(self.application.db.query(sql)[0]["name"])
         sql = "DELETE FROM UserInterest WHERE activityID = \'%s\'" % (id)
         self.application.db.execute(sql)
         sql = "DELETE FROM UserCompleted WHERE activityID = \'%s\'" % (id)

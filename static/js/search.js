@@ -1,13 +1,13 @@
 
 $(document).ready(function(){
     var position=0;
-    var suggestionsNum=2
+    var suggestionsNum=2;
     $("#searchInput").keydown(function(e){
         //on down arrow click
         if(e.keyCode == 40){
-            if(position!=suggestionsNum){
-                if(position!=0){
-                 $("[id*=suggestion_"+position+"]").css('background-color', 'white');   
+            if(position!==suggestionsNum){
+                if(position!==0){
+                 $("[id*=suggestion_"+position+"]").css('background-color', 'white');
                 }
                 position=position+1;
               $("[id*=suggestion_"+position+"]").css('background-color', '#eee9e9');
@@ -15,12 +15,12 @@ $(document).ready(function(){
            
             }
             return true;
-        } 
+        }
         //on up arrow click
         if(e.keyCode == 38){
-            if(position!=0){
-                if(position!=suggestionsNum+1){
-                 $("[id*=suggestion_"+position+"]").css('background-color', 'white');   
+            if(position!==0){
+                if(position!==suggestionsNum+1){
+                 $("[id*=suggestion_"+position+"]").css('background-color', 'white');
                 }
                 position=position-1;
               $("[id*=suggestion_"+position+"]").css('background-color', '#eee9e9');
@@ -28,11 +28,11 @@ $(document).ready(function(){
            
             }
             return true;
-        } 
+        }
 
         if(e.keyCode == 13){
             // user has highlighted a choice
-            if(position!=0){
+            if(position!==0){
                 alert($("[id*=suggestion_"+position+"_link]").text());
             }
         }
@@ -44,7 +44,7 @@ $(document).ready(function(){
         }
         if(!$(this).val()){
             $('.suggestions').css('display', 'none');
-            return;    
+            return;
         }
         $.ajax({
             type: 'POST',
@@ -54,8 +54,7 @@ $(document).ready(function(){
                 _xsrf: getCookie("_xsrf")
             },
             success: function(response){
-                console.log(response.closest_word);
-                renderSuggestion(response.closest_word);
+                console.log(response);
             }
         });
     });
@@ -67,7 +66,6 @@ function getCookie(name) {
 }
 
 function renderSuggestion(suggestion){
-    $()
     $('#suggestion_1_link').text(suggestion);
     $('.suggestions').css('display', 'block');
 

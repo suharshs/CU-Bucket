@@ -55,3 +55,35 @@ class MobileCompleteActivityHandler(MobileHandler):
 
         self.write({"success": "true"})
         self.finish()
+
+
+class MobileAddActivityHandler(MobileHandler):
+    def post(self):
+        name = self.get_argument('name', '')
+        description = self.get_argument('description', '')
+        category = self.get_argument('category', '')
+        location = self.get_argument('location', '')
+        username = self.get_argument('username', '')
+
+        sql = """INSERT INTO Activity (name, description, location, rating, creator)
+            VALUES ('{0}', '{1}', '{2}', 0, '{3}')""".format(name, description, location, username)
+        self.application.db.execute(sql)
+
+        sql = " SELECT * FROM Activity WHERE ID = (SELECT MAX(ID) FROM Activity)"   # figure out the last id we input
+        results = self.application.db.query(sql)
+        id = results[0]['ID']
+        print 'id', id
+
+        # whitespace-delimited category names
+        for catname in category.split():
+            sql = """INSERT INTO Category (name, activityID)
+                VALUES (\'%s\', %s)""" % (catname, id)
+            self.application.db.execute(sql)
+
+        self.set_header("Content-Type", "application/json")
+        was_successful = "true"
+        info = {"passed": was_successful}
+        info['userName'] = self.get_current_user()
+        info['results'] = results
+        self.write(json.dumps(info))
+        self.finish()

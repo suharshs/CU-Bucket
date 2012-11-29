@@ -18,6 +18,7 @@ from handlers.search import *
 from handlers.top import *
 from handlers.search_results import *
 from handlers.mobile import *
+from handlers.trie.trie import *
 
 PORT = sys.argv[1]
 
@@ -33,6 +34,14 @@ class Application(tornado.web.Application):
 
         # cPanel mysql host
         self.db = Connection(host="engr-cpanel-mysql.engr.illinois.edu", user="cubucket_root", password="cucket", database="cubucket_db")
+
+        sql = "SELECT name FROM Activity"
+        self.trie = Trie()
+        results = self.db.query(sql)
+        trie_words = []
+        for result in results:
+            trie_words.append(result["name"])
+        self.trie.add_words(*trie_words)
 
         # local mysql host
         #self.db = Connection(host='localhost:3306', user='root', password='', database='cucket')  # will later need to change this for heroku

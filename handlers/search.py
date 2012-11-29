@@ -17,6 +17,13 @@ class SearchHandler(BaseHandler):
             user_word is the part of the word that the user has typed so far
         """
         user_string = self.get_argument("user_string", "")
+        words = self.application.trie.check_prefix(user_string)
+        self.set_header("Content-Type", "application/json")
+        self.write(json.dumps({"matches": words}))
+        self.finish()
+
+        """
+        user_string = self.get_argument("user_string", "")
         print user_string
         sql = "SELECT name FROM Activity"
         print sql
@@ -36,3 +43,4 @@ class SearchHandler(BaseHandler):
         self.set_header("Content-Type", "application/json")
         self.write(json.dumps({"closest_word": closest_match}))
         self.finish()
+        """
