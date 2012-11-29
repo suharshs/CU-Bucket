@@ -215,6 +215,22 @@
 	cursor: pointer;
 }
 
+.remove-from-my-bucket{
+	position:absolute;
+	right:0;
+	bottom:0;
+	top:0;
+	margin-top: auto;
+	margin-bottom: 8px;
+	margin-right:5px;
+	width:50px;
+	height:50px;
+}
+
+.remove-from-my-bucket:hover{
+	cursor: pointer;
+}
+
 .body-down{
 	padding-top: 50px;
 }

@@ -26,13 +26,27 @@ $(document).ready(function(){
 
     // create the function for the button rating
     $(".add-to-my-bucket").live("click", function(){
-        var toRemove = $(this);
+        var toChange = $(this);
         console.log("click the add to my bucket button");
         $.ajax({
             type: 'GET',
-            url:  '/activity/add/' + toRemove.parent().attr('id'),
+            url:  '/activity/add/' + toChange.parent().attr('id'),
             success: function(){
-                toRemove.remove();
+                toChange.parent().append('<img src="../static/img/bucketIcon2.png" class="remove-from-my-bucket" id="remove-from-my-bucket">');
+                toChange.remove();
+            }
+        });
+    });
+
+    $(".remove-from-my-bucket").live("click", function(){
+        var toChange = $(this);
+        console.log("click the remove to my bucket button");
+        $.ajax({
+            type: 'GET',
+            url:  '/activity/remove/' + toChange.parent().attr('id'),
+            success: function(){
+                toChange.parent().append('<img src="../static/img/bucketIcon3.png" class="add-to-my-bucket" id="add-to-my-bucket">');
+                toChange.remove();
             }
         });
     });
