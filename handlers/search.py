@@ -17,17 +17,21 @@ class SearchHandler(BaseHandler):
             user_word is the part of the word that the user has typed so far
         """
         user_string = self.get_argument("user_string", "")
-
-        sql = "SELECT name FROM Activity WHERE name LIKE \'%s%\'" % (user_string)
+        print user_string
+        sql = "SELECT name FROM Activity"
+        print sql
         results = self.application.db.query(sql)
-
+        print results
         dictionary = []
         print user_string
         for result in results:
             print result["name"]
             dictionary.append(result["name"])
 
-        closest_match = nearest_word(user_string, dictionary)
+        if (len(dictionary) == 0):
+            closest_match = " "
+        else:
+            closest_match = nearest_word(user_string, dictionary)
 
         self.set_header("Content-Type", "application/json")
         self.write(json.dumps({"closest_word": closest_match}))

@@ -17,6 +17,7 @@ from handlers.about import *
 from handlers.search import *
 from handlers.top import *
 from handlers.search_results import *
+from handlers.mobile import *
 
 PORT = sys.argv[1]
 
@@ -51,7 +52,10 @@ class Application(tornado.web.Application):
             tornado.web.URLSpec(r'/activity/remove/([0-9]+)', DeleteBucketActivityHandler),
             tornado.web.URLSpec(r'/top', TopHandler),
             tornado.web.URLSpec(r'/search/results', SearchResultsHandler),
-            tornado.web.URLSpec(r'/activity/complete/([0-9]+)', CompleteActivityHandler)
+            tornado.web.URLSpec(r'/activity/complete/([0-9]+)', CompleteActivityHandler),
+            tornado.web.URLSpec(r'/mobile/login', MobileLoginHandler),
+            tornado.web.URLSpec(r'/mobile/bucket', MobileUserBucketHandler),
+            tornado.web.URLSpec(r'/mobile/complete', MobileCompleteActivityHandler)
         ]
 
         current_dir = os.path.dirname(__file__)

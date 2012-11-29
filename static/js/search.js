@@ -67,6 +67,7 @@ function getCookie(name) {
 }
 
 function renderSuggestion(suggestion){
+    $()
     $('#suggestion_1_link').text(suggestion);
     $('.suggestions').css('display', 'block');
 
