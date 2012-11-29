@@ -3,42 +3,42 @@
 {% block title %}{{ info['username'] }}{% end %}
 
 {% block body %}
-    <body>
-        <div class="overlap-fix container">
+    <div class="overlap-fix container">
         <h1>Welcome To Your Dashboard!</h1>  
-        </div>
+    </div>
 
-    <div class = "span12">
-        <h1>Your Progress</h1>
-        {%  for activity in info['bucket'] %}   
-        <div class="progress">
-                <div class="bar bar-success" style={{"width:"+str(len(info['bucket']))+"%;"}}></div>
-                <div class="bar bar-danger" style={{"width:"+str(len(activity))+"%;"}}></div>
-            </div>
-        </div>
-        
+    <div class="overlap-fix container">
         <div class="row">
-            <h1>Created By You</h1>
-            <div id="activity-board" class="span6">
-                {%  for activity in info['created'] %}
-                    <div class="activity" id= {{ activity['ID'] }} >
-                        <div class="activity-name">{{activity['name']}}</div>   
-                        <div class="description">{{ activity['description']}}</div>
-                        <div class="location">{{ activity['location']}}</div>   
-                        <div class="creator">by {{ activity['creator']}}</div>
-                        {% if info['username'] == activity['creator'] %}
-                        <img src="../static/img/close.png" class="delete-button" id="delete-button">
-                        {% end %}
+            <div class="span12">
+                <h1>Your Progress</h1>
+                <div class="progress">
+                        <div class="bar bar-success" style={{"width:"+str(info['bucket_count'])+"%;"}}></div>
+                        <div class="bar bar-danger" style={{"width:"+str(info['completed_count'])+"%;"}}></div>
                     </div>
-                    <div class="hr"></div>
-                {% end %}
+                </div>
             </div>
-
-
-            <div class="span6">
+        </div>
+        <div class="row">
+            <div class="span4">
+                <h1>Created By You</h1>
+                <div id="activity-board">
+                    {%  for activity in info['created'] %}
+                        <div class="activity" id= {{ activity['ID'] }} >
+                            <div class="activity-name">{{activity['name']}}</div>   
+                            <div class="description">{{ activity['description']}}</div>
+                            <div class="location">{{ activity['location']}}</div>   
+                            <div class="creator">by {{ activity['creator']}}</div>
+                            {% if info['username'] == activity['creator'] %}
+                            <img src="../static/img/close.png" class="delete-button" id="delete-button">
+                            {% end %}
+                        </div>
+                        <div class="hr"></div>
+                    {% end %}
+                </div>
+            </div>
+            <div class="span4">
                 <h1>Your Bucket</h1>
                 {%  for activity in info['bucket'] %}
-
                     <div class="activity" id= {{ activity['ID'] }} >
                         <div class="activity-name">{{activity['name']}}</div>   
                         <div class="description">{{ activity['description']}}</div>
@@ -51,9 +51,8 @@
                     <div class="hr"></div>
                 {% end %}
             </div>
-
-            <div class="span4"
-                <h1>Recommended For You</h1>
+            <div class="span4">
+                <h1>Recommended</h1>
                 {% for activity in info['recommendations'] %}
                     <div class="category" id= {{ activity['ID'] }} >
                         <div class="activity-name">{{activity['name']}}</div>   
@@ -64,10 +63,6 @@
                     <div class="hr"></div>
                 {% end %}
             </div>
-            {% end %}
-
-
-        </div>
-
-    </body>
+        </div> <!-- /row -->
+    </div> <!-- /container -->
 {% end %}

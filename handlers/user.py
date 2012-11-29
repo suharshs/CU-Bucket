@@ -31,6 +31,22 @@ class UserHandler(BaseHandler):
         info['bucket'] = self.application.db.query(sql)
 
 
+        # Completed activities 
+        sql = """
+        SELECT * FROM UserCompleted uc
+        JOIN Activity act 
+        ON act.ID = uc.activityID
+        WHERE uc.userName = '{0}'
+        """.format(username)
+        info['completed'] = self.application.db.query(sql)
+
+
+
+        # Progress bar percentages
+        info['bucket_count'] = min(len(info['bucket']), 100)
+        info['completed_count'] = min(len(info['completed']), 100)
+        
+
         info['recommendations'] = []  # this will have the pagerank results
 
         info['username'] = self.get_current_user()
