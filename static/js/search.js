@@ -2,7 +2,7 @@
 $(document).ready(function(){
     var position=0;
     var suggestionsNum=2
-    $(this).keydown(function(e){
+    $("#searchInput").keydown(function(e){
         //on down arrow click
         if(e.keyCode == 40){
             if(position!=suggestionsNum){
