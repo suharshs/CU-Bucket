@@ -45,7 +45,8 @@ class Application(tornado.web.Application):
             tornado.web.URLSpec(r'/home', HomeHandler),
             tornado.web.URLSpec(r'/activity/add/([0-9]+)', RatingHandler),
             tornado.web.URLSpec(r'/activity/delete/([0-9]+)', DeleteActivityHandler),
-            tornado.web.URLSpec(r'/search', SearchHandler)
+            tornado.web.URLSpec(r'/search', SearchHandler),
+            tornado.web.URLSpec(r'/activity/bucket_remove/([0-9]+)', DeleteBucketActivityHandler)
         ]
 
         current_dir = os.path.dirname(__file__)

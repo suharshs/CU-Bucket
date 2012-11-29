@@ -61,3 +61,14 @@ class DeleteActivityHandler(BaseHandler):
         self.application.db.execute(sql)
         sql = "DELETE FROM Activity WHERE ID = \'%s\'" % (id)
         self.application.db.execute(sql)
+
+
+class DeleteBucketActivityHandler(BaseHandler):
+    def get(self, id):
+        sql = " DELETE FROM UserInterest WHERE userName = \'%s\' AND activityID = %s " % (self.get_current_user(), id)
+        self.application.db.execute(sql)
+        # next increment in Rating column of Activity table
+        sql = " UPDATE Activity SET rating=rating-1 WHERE ID=%s " % (id)
+        self.application.db.execute(sql)
+        self.finish()
+
