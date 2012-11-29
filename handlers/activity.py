@@ -51,6 +51,17 @@ class RatingHandler(BaseHandler):
         self.finish()
 
 
+class CompleteActivityHandler(BaseHandler):
+    def get(self, id):
+        # first add relationship to usercompleted table
+        sql = " INSERT INTO UserCompleted (userName, activityID) VALUES (\'%s\', %s)" % (self.get_current_user(), id)
+        self.application.db.execute(sql)
+        # next remove the activity from the users bucket
+        sql = " DELETE FROM UserInterest WHERE userName = \'%s\' AND activityID = %s " % (self.get_current_user(), id)
+        self.application.db.execute(sql)
+        self.finish()
+
+
 class DeleteActivityHandler(BaseHandler):
     def get(self, id):
         sql = "DELETE FROM UserInterest WHERE activityID = \'%s\'" % (id)
