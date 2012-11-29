@@ -38,6 +38,15 @@ class Trie:
                     curr = curr[letter]
                 curr.pop("_leaf")  # removing leaf node
 
+    def check_prefix(self, prefix):
+        curr = self.trie
+        for letter in prefix:
+            if letter in curr:
+                curr = curr[letter]
+            else:
+                break
+                
+
 
 if __name__ == "__main__":
     trie = Trie()
