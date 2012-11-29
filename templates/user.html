@@ -5,9 +5,17 @@
 {% block body %}
     <body>
         <div class="overlap-fix container">
-        <h1>Dashboard</h1>  
+        <h1>Welcome To Your Dashboard!</h1>  
         </div>
 
+    <div class = "span12">
+        <h1>Your Progress</h1>
+        {%  for activity in info['bucket'] %}   
+        <div class="progress">
+                <div class="bar bar-success" style={{"width:"+str(len(info['bucket']))+"%;"}}></div>
+                <div class="bar bar-danger" style={{"width:"+str(len(activity))+"%;"}}></div>
+            </div>
+        </div>
         
         <div class="row">
             <h1>Created By You</h1>
@@ -27,7 +35,7 @@
             </div>
 
 
-            <div class="span4">
+            <div class="span6">
                 <h1>Your Bucket</h1>
                 {%  for activity in info['bucket'] %}
 
@@ -44,12 +52,6 @@
                 {% end %}
             </div>
 
-            <div class="progress">
-                <div class="bar bar-success" style="width: 35%;"></div>
-                <div class="bar bar-danger" style="width: 20%;"></div>
-            </div>
-
-
             <div class="span4"
                 <h1>Recommended For You</h1>
                 {% for activity in info['recommendations'] %}
@@ -62,7 +64,7 @@
                     <div class="hr"></div>
                 {% end %}
             </div>
-
+            {% end %}
 
 
         </div>
