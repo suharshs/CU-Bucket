@@ -12,8 +12,8 @@
             <div class="span12">
                 <h1>Your Progress</h1>
                 <div class="progress">
-                    <div class="bar bar-success" style={{"width:"+str(info['bucket_count'])+"%;"}}></div>
-                    <div class="bar bar-danger" style={{"width:"+str(info['completed_count'])+"%;"}}></div>
+                    <div id="complete-bar" title="Completed activities" class="bar bar-success" style={{"width:"+str(info['bucket_count'])+"%;"}}></div>
+                    <div id="incomplete-bar" title="Unfinished activities" class="bar bar-danger" style={{"width:"+str(info['completed_count'])+"%;"}}></div>
                 </div>
             </div>
         </div>
@@ -68,3 +68,9 @@
         </div> <!-- /row -->
     </div> <!-- /container -->
 {% end %}
+
+
+{% block scripts %}
+    <script type="text/javascript" src="../static/js/user.js"></script>
+{% end %}
+
