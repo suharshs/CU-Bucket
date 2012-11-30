@@ -236,7 +236,7 @@
 }
 
 .searchInput{
-	position:absolute;
+	position:fixed;
 	right: 20px;
 	z-index: 1040;
 
