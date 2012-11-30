@@ -57,7 +57,7 @@ class UserHandler(BaseHandler):
 
 
         # Recommendations
-        # TODO : don't show completed activities
+        # TODO : don't show completed activities and activities in bucket
         sql = """SELECT DISTINCT c.activityID AS 'ID', a.name, a.description, a.creator, a.rating, a.location
         FROM 
         (SELECT c.name, COUNT(c.activityID) AS 'activities'
