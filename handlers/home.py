@@ -7,8 +7,8 @@ class HomeHandler(BaseHandler):
         info['username'] = self.get_current_user()
 
         sql = """ SELECT * FROM Activity 
-        LEFT JOIN (SELECT userName as interestUserName, 
-        activityID FROM UserInterest WHERE userName='{0}') 
+        LEFT JOIN (SELECT userName as interestUserName, activityID 
+            FROM UserInterest WHERE userName='{0}') 
         AS currUserInterest ON 
         Activity.ID = currUserInterest.activityID 
         LEFT JOIN (SELECT userName as completedUserName, activityID 

@@ -13,11 +13,18 @@ class UserHandler(BaseHandler):
 
 
         # Get the activities created by the user
-        sql = """
-        SELECT * FROM Activity
-        WHERE CREATOR = '{0}'
-        ORDER BY Activity.ID DESC LIMIT 0, 20
-        """.format(username)
+        sql = """ SELECT * FROM Activity a
+        LEFT JOIN (SELECT userName as interestUserName, activityID 
+            FROM UserInterest WHERE userName='{0}') 
+        AS currUserInterest 
+        ON a.ID = currUserInterest.activityID 
+        LEFT JOIN (SELECT userName as completedUserName, activityID 
+            FROM UserCompleted WHERE userName='{0}') 
+        AS currUserComplete 
+        ON a.ID = currUserComplete.activityID 
+        WHERE a.creator='{0}'
+        ORDER BY a.ID DESC 
+        LIMIT 0, 20""".format(username)
         info['created'] = self.application.db.query(sql)
 
 
@@ -50,6 +57,7 @@ class UserHandler(BaseHandler):
 
 
         # Recommendations
+        # TODO : don't show completed activities
         sql = """SELECT DISTINCT c.activityID AS 'ID', a.name, a.description, a.creator, a.rating, a.location
         FROM 
         (SELECT c.name, COUNT(c.activityID) AS 'activities'
