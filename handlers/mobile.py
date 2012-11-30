@@ -83,7 +83,6 @@ class MobileAddActivityHandler(MobileHandler):
         self.set_header("Content-Type", "application/json")
         was_successful = "true"
         info = {"passed": was_successful}
-        info['userName'] = self.get_current_user()
-        info['results'] = results
+        info['id'] = id
         self.write(json.dumps(info))
         self.finish()

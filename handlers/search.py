@@ -18,8 +18,23 @@ class SearchHandler(BaseHandler):
         """
         user_string = self.get_argument("user_string", "")
         words = self.application.trie.check_prefix(user_string)
+        results = []
+        if words:
+            names = ""
+            for word in words:
+                names = names + '\"' + word + '\"'
+                if word != words[len(words) - 1]:
+                    names = names + ", "
+            sql = """SELECT * FROM Activity
+            LEFT JOIN (SELECT userName as interestUserName, activityID FROM UserInterest WHERE userName='%s') as currUserInterest
+            ON Activity.ID = currUserInterest.activityID
+            LEFT JOIN (SELECT userName as completedUserName, activityID FROM UserCompleted WHERE userName='%s') as currUserComplete
+            ON Activity.ID = currUserComplete.activityID
+            WHERE name in (%s) ORDER BY Activity.ID DESC LIMIT 0, 20""" % (self.get_current_user(), self.get_current_user(), names)
+            results = self.application.db.query(sql)
+
         self.set_header("Content-Type", "application/json")
-        self.write(json.dumps({"matches": words}))
+        self.write(json.dumps({"matches": results, "username": self.get_current_user()}))
         self.finish()
 
         """
