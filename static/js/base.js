@@ -36,7 +36,22 @@ $(document).ready(function(){
                 toChange.remove();
             }
         });
-    });
+        $(this).tooltip('destroy');
+    }).tooltip({title: "Add to your bucket!"});
+
+    $(".remove-from-my-bucket").live("click", function(){
+        var toChange = $(this);
+        console.log("click the remove to my bucket button");
+        $.ajax({
+            type: 'GET',
+            url:  '/activity/remove/' + toChange.parent().attr('id'),
+            success: function(){
+                toChange.parent().append('<img src="../static/img/bucketIcon3.png" class="add-to-my-bucket" id="add-to-my-bucket">');
+                toChange.remove();
+            }
+        });
+        $(this).tooltip('destroy');
+    }).tooltip({title: "Remove from your bucket"});
 
     $(".complete-activity").live("click", function(){
         if (confirm("Confirm that you completed this activity. You break the honor code if you are lying.")){
@@ -50,21 +65,10 @@ $(document).ready(function(){
                 }
             });
         }
-    });
+        $(this).tooltip('destroy');
+    }).tooltip({title: "Finish this activity"});
 
 
-    $(".remove-from-my-bucket").live("click", function(){
-        var toChange = $(this);
-        console.log("click the remove to my bucket button");
-        $.ajax({
-            type: 'GET',
-            url:  '/activity/remove/' + toChange.parent().attr('id'),
-            success: function(){
-                toChange.parent().append('<img src="../static/img/bucketIcon3.png" class="add-to-my-bucket" id="add-to-my-bucket">');
-                toChange.remove();
-            }
-        });
-    });
 
     $(".delete-button").live("click", function(){
         var toRemove = $(this).parent();
@@ -76,7 +80,9 @@ $(document).ready(function(){
                 toRemove.remove();
             }
         });
-    });
+        $(this).tooltip('destroy');
+    }).tooltip({title: "Delete this activity"});
+
 });
 
 
