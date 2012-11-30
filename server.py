@@ -64,7 +64,8 @@ class Application(tornado.web.Application):
             tornado.web.URLSpec(r'/activity/complete/([0-9]+)', CompleteActivityHandler),
             tornado.web.URLSpec(r'/mobile/login', MobileLoginHandler),
             tornado.web.URLSpec(r'/mobile/bucket', MobileUserBucketHandler),
-            tornado.web.URLSpec(r'/mobile/complete', MobileCompleteActivityHandler)
+            tornado.web.URLSpec(r'/mobile/complete', MobileCompleteActivityHandler),
+            tornado.web.URLSpec(r'/mobile/add', MobileAddActivityHandler)
         ]
 
         current_dir = os.path.dirname(__file__)
