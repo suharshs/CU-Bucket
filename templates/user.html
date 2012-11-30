@@ -12,8 +12,8 @@
             <div class="span12">
                 <h1>Your Progress</h1>
                 <div class="progress">
-                    <div id="complete-bar" title="Completed activities" class="bar bar-success" style={{"width:"+str(info['bucket_count'])+"%;"}}></div>
-                    <div id="incomplete-bar" title="Unfinished activities" class="bar bar-danger" style={{"width:"+str(info['completed_count'])+"%;"}}></div>
+                    <div id="complete-bar" title="Completed activities" class="bar bar-success tip" style={{"width:"+str(info['bucket_count'])+"%;"}}></div>
+                    <div id="incomplete-bar" title="Unfinished activities" class="bar bar-danger tip" style={{"width:"+str(info['completed_count'])+"%;"}}></div>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="span4">
-                <h1>Your Bucket</h1>
+                <h1 class="tip" title="Complete these for points!">Your Bucket</h1>
                 {%  for activity in info['bucket'] %}
                     <div class="activity" id= {{ activity['ID'] }} >
                         <div class="activity-name">{{activity['name']}}</div>   
@@ -51,7 +51,7 @@
                 {% end %}
             </div>
             <div class="span4">
-                <h1>Recommended</h1>
+                <h1 class="tip" title="Try these other activities!">Recommended</h1>
                 {% for activity in info['recommendations'] %}
                     <div class="activity" id= {{ activity['ID'] }} >
                         <div class="activity-name">{{activity['name']}}</div>   

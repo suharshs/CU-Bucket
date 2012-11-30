@@ -1,7 +1,4 @@
 $(function() {
-    
-
-
-    $('#complete-bar').tooltip();
-    $('#incomplete-bar').tooltip();
+    // Apply to anything with this class
+    $('.tip').tooltip();    
 });
