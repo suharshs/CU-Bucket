@@ -80,6 +80,13 @@ class MobileAddActivityHandler(MobileHandler):
                 VALUES (\'%s\', %s)""" % (catname, id)
             self.application.db.execute(sql)
 
+        # first add relationship to userinterest table
+        sql = " INSERT INTO UserInterest (userName, activityID) VALUES (\'%s\', %s)" % (username, id)
+        self.application.db.execute(sql)
+        # next increment in Rating column of Activity table
+        sql = " UPDATE Activity SET rating=rating+1 WHERE ID=%s " % (id)
+        self.application.db.execute(sql)
+
         self.set_header("Content-Type", "application/json")
         was_successful = "true"
         info = {"passed": was_successful}
