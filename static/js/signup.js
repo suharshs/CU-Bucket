@@ -14,7 +14,7 @@ $(document).ready(function() {
 				dataType: 'json',
 				success: function(data){
 					if (data['passed'] === 'true'){
-						window.location.replace("/user/" + username_text);
+						window.location.replace("/about");
 					} else if (data['passed'] === 'false'){
 						alert('Username is already taken');
 					}
