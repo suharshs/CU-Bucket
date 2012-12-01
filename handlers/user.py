@@ -82,9 +82,9 @@ class UserHandler(BaseHandler):
         JOIN Activity a 
             ON a.ID = c.activityID
         WHERE a.ID NOT IN 
-            (SELECT activityID FROM UserInterest WHERE userName = 'martin') 
+            (SELECT activityID FROM UserInterest WHERE userName = '{0}') 
         AND a.ID NOT IN
-            (SELECT activityID FROM UserCompleted WHERE userName = 'martin') 
+            (SELECT activityID FROM UserCompleted WHERE userName = '{0}') 
         LIMIT 0, 20
         """.format(username)
         info['recommendations'] = self.application.db.query(sql)
