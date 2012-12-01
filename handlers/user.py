@@ -11,7 +11,6 @@ class UserHandler(BaseHandler):
         username = self.get_current_user()
         info = {}
 
-
         # Get the activities created by the user
         sql = """ SELECT * FROM Activity a
         LEFT JOIN (SELECT userName as interestUserName, activityID 

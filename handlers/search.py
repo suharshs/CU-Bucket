@@ -30,8 +30,10 @@ class SearchHandler(BaseHandler):
             ON Activity.ID = currUserInterest.activityID
             LEFT JOIN (SELECT userName as completedUserName, activityID FROM UserCompleted WHERE userName='%s') as currUserComplete
             ON Activity.ID = currUserComplete.activityID
-            WHERE name in (%s) ORDER BY Activity.ID DESC LIMIT 0, 20""" % (self.get_current_user(), self.get_current_user(), names)
+            WHERE name LIKE \'%s%s%s\' ORDER BY Activity.ID DESC LIMIT 0, 20""" % (self.get_current_user(), self.get_current_user(), "%", user_string, "%")
+            print sql
             results = self.application.db.query(sql)
+            print results
 
         self.set_header("Content-Type", "application/json")
         self.write(json.dumps({"matches": results, "username": self.get_current_user()}))
