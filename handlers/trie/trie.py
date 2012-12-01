@@ -56,11 +56,11 @@ class Trie:
 
     def remove_token_words(self, *words):
         for word in words:
-            self.remove_words(*word.split())
-            for token in word.split():
-                self.indexes[token].remove(word)
+            lower_word = word.lower()
+            self.remove_words(*lower_word.split())
 
     def check_token_prefix(self, prefix):
+        prefix = prefix.lower()
         retval = []
         curr = self.trie
         for letter in prefix:

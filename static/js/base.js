@@ -82,6 +82,7 @@ $(document).ready(function(){
             url:  '/activity/delete/' + toRemove.attr('id'),
             success: function(){
                 toRemove.remove();
+                location.remove();
             }
         });
         $(this).tooltip('destroy');
