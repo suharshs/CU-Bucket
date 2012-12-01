@@ -18,7 +18,44 @@
             </div>
         </div>
         <div class="row">
-            <div class="span4">
+            <div class="span6">
+                <h1 class="tip" title="Complete these for points!">Your Bucket</h1>
+                {%  for activity in info['bucket'] %}
+                    <div class="activity" id= {{ activity['ID'] }} >
+                        <div class="activity-name">{{activity['name']}}</div>   
+                        <div class="description">{{ activity['description']}}</div>
+                        <div class="location">{{ activity['location']}}</div>   
+                        <div class="creator">by {{ activity['creator']}}</div>
+                        {% if info['username'] == activity['creator'] %}
+                        <img src="../static/img/close.png" class="delete-button" id="delete-button">
+                        {% end %}
+                        <img src="../static/img/bucketIcon2.png" class="remove-from-my-bucket" id="remove-from-my-bucket">
+                        <img src="../static/img/complete.png" class="complete-activity" id="complete-activity">
+                    </div>
+                    <div class="hr"></div>
+                {% end %}
+            </div>
+            <div class="span6">
+                <h1 class="tip" title="Try these other activities!">Recommended</h1>
+                {% for activity in info['recommendations'] %}
+                    <div class="activity" id= {{ activity['ID'] }} >
+                        <div class="activity-name">{{activity['name']}}</div>   
+                        <div class="description">{{ activity['description']}}</div>
+                        <div class="location">{{ activity['location']}}</div>   
+                        <div class="creator">by {{ activity['creator']}}</div>
+                        {% if info['username'] == activity['creator'] %}
+                        <img src="../static/img/close.png" class="delete-button" id="delete-button">
+                        {% end %}
+                        <img src="../static/img/bucketIcon3.png" class="add-to-my-bucket" id="add-to-my-bucket">
+                        <img src="../static/img/complete.png" class="complete-activity" id="complete-activity">
+                    </div>
+                    <div class="hr"></div>
+                {% end %}
+            </div>
+        </div> <!-- /row -->
+        <div class="row">
+
+            <div class="span6">
                 <h1>Created By You</h1>
                 <div id="activity-board">
                     {%  for activity in info['created'] %}
@@ -44,41 +81,19 @@
                     {% end %}
                 </div>
             </div>
-            <div class="span4">
-                <h1 class="tip" title="Complete these for points!">Your Bucket</h1>
-                {%  for activity in info['bucket'] %}
+            <div class="span6">
+                <h1 class="tip" title="Your completed activities!">Completed</h1>
+                {% for activity in info['completed'] %}
                     <div class="activity" id= {{ activity['ID'] }} >
                         <div class="activity-name">{{activity['name']}}</div>   
                         <div class="description">{{ activity['description']}}</div>
                         <div class="location">{{ activity['location']}}</div>   
                         <div class="creator">by {{ activity['creator']}}</div>
-                        {% if info['username'] == activity['creator'] %}
-                        <img src="../static/img/close.png" class="delete-button" id="delete-button">
-                        {% end %}
-                        <img src="../static/img/bucketIcon2.png" class="remove-from-my-bucket" id="remove-from-my-bucket">
-                        <img src="../static/img/complete.png" class="complete-activity" id="complete-activity">
                     </div>
                     <div class="hr"></div>
                 {% end %}
             </div>
-            <div class="span4">
-                <h1 class="tip" title="Try these other activities!">Recommended</h1>
-                {% for activity in info['recommendations'] %}
-                    <div class="activity" id= {{ activity['ID'] }} >
-                        <div class="activity-name">{{activity['name']}}</div>   
-                        <div class="description">{{ activity['description']}}</div>
-                        <div class="location">{{ activity['location']}}</div>   
-                        <div class="creator">by {{ activity['creator']}}</div>
-                        {% if info['username'] == activity['creator'] %}
-                        <img src="../static/img/close.png" class="delete-button" id="delete-button">
-                        {% end %}
-                        <img src="../static/img/bucketIcon3.png" class="add-to-my-bucket" id="add-to-my-bucket">
-                        <img src="../static/img/complete.png" class="complete-activity" id="complete-activity">
-                    </div>
-                    <div class="hr"></div>
-                {% end %}
-            </div>
-        </div> <!-- /row -->
+        </div>
     </div> <!-- /container -->
 {% end %}
 
