@@ -81,15 +81,10 @@ class UserHandler(BaseHandler):
             ON c.name = bucket.name
         JOIN Activity a 
             ON a.ID = c.activityID
-        LEFT JOIN UserInterest ui
-            ON a.ID = ui.activityID
-        LEFT JOIN UserCompleted uc
-            ON a.ID = uc.activityID
-        WHERE (ui.userName IS NULL 
-            OR ui.userName != '{0}')
-        AND 
-        (uc.userName IS NULL 
-            OR uc.userName != '{0}')
+        WHERE a.ID NOT IN 
+            (SELECT activityID FROM UserInterest WHERE userName = 'martin') 
+        AND a.ID NOT IN
+            (SELECT activityID FROM UserCompleted WHERE userName = 'martin') 
         LIMIT 0, 20
         """.format(username)
         info['recommendations'] = self.application.db.query(sql)
