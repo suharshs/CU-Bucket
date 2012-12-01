@@ -121,6 +121,7 @@ function postMaker(id, name, description, location, creator){
             '<div class="creator">by ' + creator + '</div>',
             '<img src="../static/img/close.png" class="delete-button" id="delete-button">',
             '<img src="../static/img/bucketIcon2.png" class="add-to-my-bucket" id="add-to-my-bucket">',
+            '<img src="../static/img/complete.png" class="complete-activity" id="complete-activity">',
         '</div>',
         '<div class="hr"></div>'].join('\n');
     return postString;
