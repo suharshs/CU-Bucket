@@ -19,6 +19,7 @@ from handlers.top import *
 from handlers.search_results import *
 from handlers.mobile import *
 from handlers.trie.trie import *
+from handlers.category import *
 
 PORT = sys.argv[1]
 
@@ -67,7 +68,8 @@ class Application(tornado.web.Application):
             tornado.web.URLSpec(r'/mobile/login', MobileLoginHandler),
             tornado.web.URLSpec(r'/mobile/bucket', MobileUserBucketHandler),
             tornado.web.URLSpec(r'/mobile/complete', MobileCompleteActivityHandler),
-            tornado.web.URLSpec(r'/mobile/add', MobileAddActivityHandler)
+            tornado.web.URLSpec(r'/mobile/add', MobileAddActivityHandler),
+            tornado.web.URLSpec(r'/category/([a-zA-Z0-9-_]*)', CategoryHandler)
         ]
 
         current_dir = os.path.dirname(__file__)

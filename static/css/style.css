@@ -291,6 +291,15 @@
 }
 
 
+.category-link {
+    font-size: 24pt;
+    color: #FFFFFF;
+}
+
+.category-link:hover {
+    color: #999999;
+}
+
 
 /*.suggestionsinput {
 font-size: 36px;
