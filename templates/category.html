@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Categories - {{ info['username'] }}{% end %}
+
+{% block body %}
+    <div class="overlap-fix container">
+        <div class="row">
+            <div class="span12">
+                <div id="activity-board">
+                    {%  for activity in info['activities'] %}
+                        <div class="activity" id= {{ activity['ID'] }} >
+                            <div class="activity-name">{{activity['name']}}</div>   
+                            <div class="description">{{ activity['description']}}</div>
+                            <div class="location">{{ activity['location']}}</div>   
+                            <div class="creator">by {{ activity['creator']}}</div>
+                        </div>
+                        <div class="hr"></div>
+                    {% end %}
+                </div>
+            </div>
+        </div> <!-- /row -->
+        <div class="row">
+            <div class="span12">
+                <h1>Categories</h1>
+                <div id="category-board">
+                    {%  for category in info['categories'] %}
+                        <a class="category-link" href="{{category['name']}}">{{category['name']}}</a>
+                    {% end %}
+                </div>
+            </div>
+        </div> <!-- /row -->
+    </div> <!-- /container -->
+{% end %}
+
+
+{% block scripts %}
+    <script type="text/javascript" src="../static/js/user.js"></script>
+{% end %}
+
