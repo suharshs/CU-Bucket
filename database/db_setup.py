@@ -12,10 +12,12 @@ db = Connection(host="engr-cpanel-mysql.engr.illinois.edu", user="cubucket_root"
 
 
 # Drop the existing tables
+"""Comment this out so that we don't lose data from now on
 tables = ['UserCompleted', 'UserInterest', 'Category', 'Activity', 'User']
 for table in tables:
     sql = "DROP TABLE IF EXISTS `{0}`".format(table)
     db.execute(sql)
+"""
 
 
 # Create the User table
