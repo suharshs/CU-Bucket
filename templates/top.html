@@ -9,12 +9,13 @@
                 <div id="activity-board" >
                     {%	for idx, activity in enumerate(info['results']) %}
                         <div class="activity" id= {{ activity['ID'] }} >
-                            <div class="index"> {{idx+1}}</div>
-                            <div class="activity-name">{{activity['name']}}</div>	
-                            <div class="description">{{ activity['description']}}</div>
-                            <div class="location">{{ activity['location']}}</div>	
-                            <div class="creator">by {{ activity['creator']}}</div>
-                            <div class="likes">{{activity['rating']}} </div>
+                            <div style="overflow: scroll">
+                                <div class="activity-name">{{activity['name']}}</div>   
+                                <div class="description">{{ activity['description']}}</div>
+                                <div class="location">{{ activity['location']}}</div>   
+                                <div class="creator">by {{ activity['creator']}}</div>
+                            </div>
+                            <div class="likes">This has been added to {{activity['rating']}} buckets.</div>
                             {% if info['username'] == activity['creator'] %}
                             <img src="../static/img/close.png" class="delete-button" id="delete-button">
                             {% end %}
