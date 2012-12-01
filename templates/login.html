@@ -9,7 +9,24 @@
 	<link href="../static/css/style.css" rel="stylesheet">
     <title>Cucket - Login</title>
 	</head>
-	<body>
+	<body id="body">
+		<div class="navbar navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/">cucket</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li><a href="javascript:replaceAbout();">About</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                 </div>
+            </div>
+        </div>
 		<div class="container">
 			<div class="box_login center">
 				<img id ="login_icon" class="center_horizontal"src="../static/img/bucketIcon2.png"/>
@@ -21,7 +38,7 @@
 					<button id="login-button" type="button" class="btn btn-primary login-button">Login</button>
 					<button id="new-user-button" type="button" class="btn btn-info new-user-button">New User</button>
 				</form>
-			</div>		
+			</div>
 		</div>
 	</body>
 </html>
