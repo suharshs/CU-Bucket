@@ -9,7 +9,7 @@
                 <div id="activity-board" >
                     {%	for activity in info['results'] %}
                         <div class="activity" id= {{ activity['ID'] }} >
-                            <div style="overflow: scroll">
+                            <div style="overflow: hidden">
                                 <div class="activity-name">{{activity['name']}}</div>	
                                 <div class="description">{{ activity['description']}}</div>
                                 <div class="location">{{ activity['location']}}</div>	

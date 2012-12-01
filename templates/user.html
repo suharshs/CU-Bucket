@@ -29,7 +29,7 @@
                 <h1 class="tip" title="Complete these for points!" id="your-bucket">Your Bucket</h1>
                 {%  for activity in info['bucket'] %}
                     <div class="activity" id= {{ activity['ID'] }} >
-                        <div style="overflow: scroll">
+                        <div style="overflow: hidden">
                                 <div class="activity-name">{{activity['name']}}</div>   
                                 <div class="description">{{ activity['description']}}</div>
                                 <div class="location">{{ activity['location']}}</div>   
@@ -48,7 +48,7 @@
                 <h1 class="tip" title="Try these other activities!" id="recommended">Recommended</h1>
                 {% for activity in info['recommendations'] %}
                     <div class="activity" id= {{ activity['ID'] }} >
-                        <div style="overflow: scroll">
+                        <div style="overflow: hidden">
                                 <div class="activity-name">{{activity['name']}}</div>   
                                 <div class="description">{{ activity['description']}}</div>
                                 <div class="location">{{ activity['location']}}</div>   
@@ -71,7 +71,7 @@
                 <div id="created">
                     {%  for activity in info['created'] %}
                         <div class="activity" id= {{ activity['ID'] }} >
-                            <div style="overflow: scroll">
+                            <div style="overflow: hidden">
                                 <div class="activity-name">{{activity['name']}}</div>   
                                 <div class="description">{{ activity['description']}}</div>
                                 <div class="location">{{ activity['location']}}</div>   
@@ -98,7 +98,7 @@
                 <h1 class="tip" title="Your completed activities!" id="completed">Completed</h1>
                 {% for activity in info['completed'] %}
                     <div class="activity" id= {{ activity['ID'] }} >
-                        <div style="overflow: scroll">
+                        <div style="overflow: hidden">
                                 <div class="activity-name">{{activity['name']}}</div>   
                                 <div class="description">{{ activity['description']}}</div>
                                 <div class="location">{{ activity['location']}}</div>   
