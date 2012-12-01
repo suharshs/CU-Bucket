@@ -17,7 +17,7 @@ class SearchHandler(BaseHandler):
             user_word is the part of the word that the user has typed so far
         """
         user_string = self.get_argument("user_string", "")
-        words = self.application.trie.check_prefix(user_string)
+        words = self.application.trie.check_token_prefix(user_string.lower())
         results = []
         if words:
             names = ""
@@ -30,7 +30,7 @@ class SearchHandler(BaseHandler):
             ON Activity.ID = currUserInterest.activityID
             LEFT JOIN (SELECT userName as completedUserName, activityID FROM UserCompleted WHERE userName='%s') as currUserComplete
             ON Activity.ID = currUserComplete.activityID
-            WHERE name LIKE \'%s%s%s\' ORDER BY Activity.ID DESC LIMIT 0, 20""" % (self.get_current_user(), self.get_current_user(), "%", user_string, "%")
+            WHERE name in (%s) ORDER BY Activity.ID DESC LIMIT 0, 20""" % (self.get_current_user(), self.get_current_user(), names)
             print sql
             results = self.application.db.query(sql)
             print results

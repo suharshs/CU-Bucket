@@ -38,10 +38,12 @@ class Application(tornado.web.Application):
         sql = "SELECT name FROM Activity"
         self.trie = Trie()
         results = self.db.query(sql)
+        self.activityNames = {}
+
         trie_words = []
         for result in results:
             trie_words.append(result["name"])
-        self.trie.add_words(*trie_words)
+        self.trie.add_token_words(*trie_words)
 
         # local mysql host
         #self.db = Connection(host='localhost:3306', user='root', password='', database='cucket')  # will later need to change this for heroku
