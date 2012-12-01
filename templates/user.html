@@ -4,7 +4,14 @@
 
 {% block body %}
     <div class="overlap-fix container">
-        <h1>Welcome To Your Dashboard!</h1>  
+        <h1>Welcome To Your Dashboard!</h1>
+        <h2>Your:</h2>
+        <div class="row user-link">
+            <div class="span12"><a href="#your-bucket">Bucket</a>
+            <a href="#recommended">Recommendations</a>
+            <a href="#created">Creations</a>
+            <a href="#completed">Completions</a></div>
+        </div>
     </div>
 
     <div class="overlap-fix container">
@@ -19,7 +26,7 @@
         </div>
         <div class="row">
             <div class="span6">
-                <h1 class="tip" title="Complete these for points!">Your Bucket</h1>
+                <h1 class="tip" title="Complete these for points!" id="your-bucket">Your Bucket</h1>
                 {%  for activity in info['bucket'] %}
                     <div class="activity" id= {{ activity['ID'] }} >
                         <div class="activity-name">{{activity['name']}}</div>   
@@ -36,7 +43,7 @@
                 {% end %}
             </div>
             <div class="span6">
-                <h1 class="tip" title="Try these other activities!">Recommended</h1>
+                <h1 class="tip" title="Try these other activities!" id="recommended">Recommended</h1>
                 {% for activity in info['recommendations'] %}
                     <div class="activity" id= {{ activity['ID'] }} >
                         <div class="activity-name">{{activity['name']}}</div>   
@@ -57,7 +64,7 @@
 
             <div class="span6">
                 <h1>Created By You</h1>
-                <div id="activity-board">
+                <div id="created">
                     {%  for activity in info['created'] %}
                         <div class="activity" id= {{ activity['ID'] }} >
                             <div class="activity-name">{{activity['name']}}</div>   
@@ -82,7 +89,7 @@
                 </div>
             </div>
             <div class="span6">
-                <h1 class="tip" title="Your completed activities!">Completed</h1>
+                <h1 class="tip" title="Your completed activities!" id="completed">Completed</h1>
                 {% for activity in info['completed'] %}
                     <div class="activity" id= {{ activity['ID'] }} >
                         <div class="activity-name">{{activity['name']}}</div>   

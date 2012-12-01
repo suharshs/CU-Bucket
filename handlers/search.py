@@ -22,6 +22,8 @@ class SearchHandler(BaseHandler):
         if words:
             names = ""
             for word in words:
+                word = word.replace("\'", "\\'")
+                word = word.replace("\"", "\\\"")
                 names = names + '\"' + word + '\"'
                 if word != words[len(words) - 1]:
                     names = names + ", "

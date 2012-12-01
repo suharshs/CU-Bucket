@@ -19,7 +19,9 @@ $(document).ready(function(){
                     vals.location,
                     data['results'][0]['creator']));
                 $('#new-activity')[0].reset();  // Reset all the fields of the form
-                location.reload();
+                if (location.pathname.indexOf("user") !== -1){
+                    location.reload();
+                }
             }
         });
     });
@@ -35,7 +37,9 @@ $(document).ready(function(){
             success: function(){
                 toChange.parent().append('<img src="../static/img/bucketIcon2.png" class="remove-from-my-bucket" id="remove-from-my-bucket">');
                 toChange.remove();
-                location.reload();
+                if (location.pathname.indexOf("user") !== -1){
+                    location.reload();
+                }
             }
         });
         $(this).tooltip('destroy');
@@ -50,7 +54,9 @@ $(document).ready(function(){
             success: function(){
                 toChange.parent().append('<img src="../static/img/bucketIcon3.png" class="add-to-my-bucket" id="add-to-my-bucket">');
                 toChange.remove();
-                location.reload();
+                if (location.pathname.indexOf("user") !== -1){
+                    location.reload();
+                }
             }
         });
         $(this).tooltip('destroy');
@@ -65,7 +71,9 @@ $(document).ready(function(){
                 url:  '/activity/complete/' + toChange.parent().attr('id'),
                 success: function(){
                     toChange.remove();
-                    location.reload();
+                    if (location.pathname.indexOf("user") !== -1){
+                        location.reload();
+                    }
                 }
             });
         }
@@ -82,7 +90,9 @@ $(document).ready(function(){
             url:  '/activity/delete/' + toRemove.attr('id'),
             success: function(){
                 toRemove.remove();
-                location.remove();
+                if (location.pathname.indexOf("user") !== -1){
+                    location.reload();
+                }
             }
         });
         $(this).tooltip('destroy');

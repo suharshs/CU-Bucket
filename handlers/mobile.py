@@ -65,6 +65,15 @@ class MobileAddActivityHandler(MobileHandler):
         location = self.get_argument('location', '')
         username = self.get_argument('username', '')
 
+        name = name.replace("\'", "\\'")
+        name = name.replace("\"", "\\\"")
+        description = description.replace("\'", "\\'")
+        description = description.replace("\"", "\\\"")
+        category = category.replace("\'", "\\'")
+        category = category.replace("\"", "\\\"")
+        location = location.replace("\'", "\\'")
+        location = location.replace("\"", "\\\"")
+
         sql = """INSERT INTO Activity (name, description, location, rating, creator)
             VALUES ('{0}', '{1}', '{2}', 0, '{3}')""".format(name, description, location, username)
         self.application.db.execute(sql)

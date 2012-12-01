@@ -300,6 +300,14 @@
     color: #999999;
 }
 
+.user-link {
+    font-size: 20pt;
+    color: #FFFFFF;
+}
+
+.user-link:hover {
+    color: #999999;
+}
 
 /*.suggestionsinput {
 font-size: 36px;

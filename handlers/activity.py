@@ -16,6 +16,15 @@ class ActivityHandler(BaseHandler):
         print 'category ', category
         print 'location ', location
 
+        name = name.replace("\'", "\\'")
+        name = name.replace("\"", "\\\"")
+        description = description.replace("\'", "\\'")
+        description = description.replace("\"", "\\\"")
+        category = category.replace("\'", "\\'")
+        category = category.replace("\"", "\\\"")
+        location = location.replace("\'", "\\'")
+        location = location.replace("\"", "\\\"")
+
         self.application.trie.add_token_words(name)
 
         sql = """INSERT INTO Activity (name, description, location, rating, creator)
