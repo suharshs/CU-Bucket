@@ -1,7 +1,7 @@
-@font-face {
+/*@font-face {
 	font-family: Aller;
 	src: url('../fonts/Aller/Aller_Rg.ttf');
-}
+}*/
 
 .box_login{
 	-moz-border-radius:20px;
@@ -107,7 +107,7 @@
 	bottom:0;
 	text-align:center;
 	margin-bottom:175px;
-	font-family:Aller;
+	/*font-family:Aller;*/
 	font-size:28pt;
 	color:#bcbbb3 ;
 	text-shadow: 0 1px 1px #fff;
@@ -116,7 +116,7 @@
 	bottom:0;
 	text-align:center;
 	margin-bottom:185px;
-	font-family:Aller;
+	/*font-family:Aller;*/
 	font-size:28pt;
 	color:#bcbbb3 ;
 	text-shadow: 0 1px 1px #fff;
@@ -134,7 +134,7 @@
 	-khtml-border-radius:5px;
 	border-radius: 5px;
 	padding:15px 10px;
-  	font-family: Aller;
+  	/*font-family: Aller;*/
   	/* don't do this
     width:920px;
     */
@@ -149,7 +149,7 @@
 	-khtml-border-radius:5px;
 	border-radius: 5px;
 	padding:15px 10px;
-  	font-family: Aller;
+  	/*font-family: Aller;*/
   	width:920px;
   	height:400px;
 }
