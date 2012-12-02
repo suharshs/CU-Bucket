@@ -89,6 +89,8 @@ class MobileAddActivityHandler(MobileHandler):
                 VALUES (\'%s\', %s)""" % (catname, id)
             self.application.db.execute(sql)
 
+        self.application.trie.add_token_words(name)
+
         # first add relationship to userinterest table
         sql = " INSERT INTO UserInterest (userName, activityID) VALUES (\'%s\', %s)" % (username, id)
         self.application.db.execute(sql)
