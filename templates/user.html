@@ -80,7 +80,7 @@
                             {% if info['username'] == activity['creator'] %}
                             <img src="../static/img/close.png" class="delete-button" id="delete-button">
                             {% end %}
-                            {% if activity['interestUserName'] is None %}
+                            {% if activity['interestUserName'] is None and activity['completedUserName'] is None %}
                             <img src="../static/img/bucketIcon3.png" class="add-to-my-bucket" id="add-to-my-bucket">
                             {% end %}
                             {% if activity['interestUserName'] is not None %}
