@@ -1,5 +1,6 @@
 from base import BaseHandler
 import simplejson as json
+import re
 
 
 class ActivityHandler(BaseHandler):
@@ -35,6 +36,8 @@ class ActivityHandler(BaseHandler):
         results = self.application.db.query(sql)
         id = results[0]['ID']
         print 'id', id
+
+        category = re.sub(r"[^\w\s]", ' ', category)
 
         # whitespace-delimited category names
         for catname in category.split():
