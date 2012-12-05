@@ -91,16 +91,19 @@ class CompleteActivityHandler(BaseHandler):
 
 class DeleteActivityHandler(BaseHandler):
     def get(self, id):
-        sql = "SELECT name FROM Activity WHERE ID = \'%s\'" % (id)
-        self.application.trie.remove_token_words(self.application.db.query(sql)[0]["name"])
-        sql = "DELETE FROM UserInterest WHERE activityID = \'%s\'" % (id)
-        self.application.db.execute(sql)
-        sql = "DELETE FROM UserCompleted WHERE activityID = \'%s\'" % (id)
-        self.application.db.execute(sql)
-        sql = "DELETE FROM Category WHERE activityID = \'%s\'" % (id)
-        self.application.db.execute(sql)
-        sql = "DELETE FROM Activity WHERE ID = \'%s\'" % (id)
-        self.application.db.execute(sql)
+        admin = ["suharshs", "Greg Blaszczuk", "martin", "za"]
+        sql = "SELECT name, creator FROM Activity WHERE ID = \'%s\'" % (id)
+        results = self.application.db.query(sql)
+        if (results[0]["creator"] == self.get_current_user() or admin.count(self.get_current_user())):
+            self.application.trie.remove_token_words(results[0]["name"])
+            sql = "DELETE FROM UserInterest WHERE activityID = \'%s\'" % (id)
+            self.application.db.execute(sql)
+            sql = "DELETE FROM UserCompleted WHERE activityID = \'%s\'" % (id)
+            self.application.db.execute(sql)
+            sql = "DELETE FROM Category WHERE activityID = \'%s\'" % (id)
+            self.application.db.execute(sql)
+            sql = "DELETE FROM Activity WHERE ID = \'%s\'" % (id)
+            self.application.db.execute(sql)
 
 
 class DeleteBucketActivityHandler(BaseHandler):
