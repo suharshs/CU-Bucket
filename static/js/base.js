@@ -1,29 +1,35 @@
 $(document).ready(function(){
     $("#new-activity #submit").click(function(){
         //validate if form is filled out
-        var formdata = $('#new-activity').serialize();
-        $.ajax({
-            type: 'POST',
-            url:  '/activity/new',
-            data: formdata,
-            datatype: 'json',
-            success: function(data){
-                $('#activity-modal').modal('hide');
 
-                var form = $('#new-activity');
-                var vals = getFormValues(form);
-                $('#activity-board').prepend(
-                    postMaker(data['results'][0]['ID'],
-                    vals.name,
-                    vals.description,
-                    vals.location,
-                    data['results'][0]['creator']));
-                $('#new-activity')[0].reset();  // Reset all the fields of the form
-                if (location.pathname.indexOf("user") !== -1){
-                    location.reload();
+        var form = $('#new-activity');
+        var formdata = form.serialize();
+        var vals = getFormValues(form);
+
+        if (!(vals.name && vals.description && vals.location && vals.category)) {
+            alert("Please enter something for all fields");
+        }
+        else {
+            $.ajax({
+                type: 'POST',
+                url:  '/activity/new',
+                data: formdata,
+                datatype: 'json',
+                success: function(data){
+                    $('#activity-modal').modal('hide');
+                    $('#activity-board').prepend(
+                        postMaker(data['results'][0]['ID'],
+                        vals.name,
+                        vals.description,
+                        vals.location,
+                        data['results'][0]['creator']));
+                    $('#new-activity')[0].reset();  // Reset all the fields of the form
+                    if (location.pathname.indexOf("user") !== -1){
+                        location.reload();
+                    }
                 }
-            }
-        });
+            });
+        }
     });
 
 
