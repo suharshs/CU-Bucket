@@ -1,6 +1,7 @@
 from base import BaseHandler
 import simplejson as json
 import re
+from tornado.escape import *
 
 
 class ActivityHandler(BaseHandler):
@@ -25,6 +26,10 @@ class ActivityHandler(BaseHandler):
         category = category.replace("\"", "\\\"")
         location = location.replace("\'", "\\'")
         location = location.replace("\"", "\\\"")
+        name = xhtml_escape(name)
+        description = xhtml_escape(description)
+        category = xhtml_escape(category)
+        location = xhtml_escape(location)
 
         self.application.trie.add_token_words(name)
 
@@ -56,6 +61,7 @@ class ActivityHandler(BaseHandler):
         was_successful = "true"
         info = {"passed": was_successful}
         info['userName'] = self.get_current_user()
+        info['vals'] = {"name": name, "description": description, "category": category, "location": location}
         info['results'] = results
         self.write(json.dumps(info))
         self.finish()

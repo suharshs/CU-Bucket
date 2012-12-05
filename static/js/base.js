@@ -19,9 +19,9 @@ $(document).ready(function(){
                     $('#activity-modal').modal('hide');
                     $('#activity-board').prepend(
                         postMaker(data['results'][0]['ID'],
-                        vals.name,
-                        vals.description,
-                        vals.location,
+                        data['vals'].name,
+                        data['vals'].description,
+                        data['vals'].location,
                         data['results'][0]['creator']));
                     $('#new-activity')[0].reset();  // Reset all the fields of the form
                     if (location.pathname.indexOf("user") !== -1){
