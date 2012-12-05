@@ -22,7 +22,7 @@ class Trie:
 
     def add_token_words(self, *words):
         for name in words:
-            for word in name.split().append(name):
+            for word in name.split():
                 word = word.lower()
                 if word not in self.indexes:
                     self.indexes[word] = [len(self.names)]
