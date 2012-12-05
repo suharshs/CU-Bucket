@@ -55,30 +55,34 @@ class UserHandler(BaseHandler):
 
 
         # Recommendations
-        # TODO : don't show completed activities and activities in bucket
         sql = """SELECT DISTINCT c.activityID AS 'ID', a.name, a.description, a.creator, a.rating, a.location
         FROM 
-        (SELECT c.name, COUNT(c.activityID) AS 'activities'
-         FROM UserInterest ui
-        JOIN Activity a
-        ON a.ID = ui.activityID
+        (
+           SELECT c.name, COUNT(c.activityID) AS 'activities'
+           FROM Category c
+           JOIN Activity a
+               ON a.ID = c.activityID
+           WHERE a.ID IN 
+               (SELECT ID FROM UserInterest ui
+               JOIN Activity a ON a.ID = ui.activityID
+               WHERE ui.userName = '{0}') 
+           OR a.ID IN 
+               (SELECT ID FROM UserCompleted uc
+               JOIN Activity a ON a.ID = uc.activityID
+               WHERE uc.userName = '{0}')
+           GROUP BY c.name
+           ORDER BY activities DESC 
+        ) bucket
         JOIN Category c
-        ON a.ID = c.activityID
-        WHERE ui.userName = '{0}'
-        GROUP BY c.name
-        ORDER BY Count(c.activityID) DESC) bucket
-
-        JOIN Category c
-        ON c.name = bucket.name
-
+            ON c.name = bucket.name
         JOIN Activity a 
-        ON a.ID = c.activityID
-
-        LEFT JOIN UserInterest ui
-        ON a.ID = ui.activityID
-
-        WHERE ui.userName IS NULL 
-        OR ui.userName != '{0}'""".format(username)
+            ON a.ID = c.activityID
+        WHERE a.ID NOT IN 
+            (SELECT activityID FROM UserInterest WHERE userName = '{0}') 
+        AND a.ID NOT IN
+            (SELECT activityID FROM UserCompleted WHERE userName = '{0}') 
+        LIMIT 0, 20
+        """.format(username)
         info['recommendations'] = self.application.db.query(sql)
         print info['recommendations']
 
