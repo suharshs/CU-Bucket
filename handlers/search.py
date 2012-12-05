@@ -25,8 +25,8 @@ class SearchHandler(BaseHandler):
                 word = word.replace("\'", "\\'")
                 word = word.replace("\"", "\\\"")
                 names = names + '\"' + word + '\"'
-                if word != words[len(words) - 1]:
-                    names = names + ", "
+                names = names + ", "
+            names = names[:-2]
             sql = """SELECT * FROM Activity
             LEFT JOIN (SELECT userName as interestUserName, activityID FROM UserInterest WHERE userName='%s') as currUserInterest
             ON Activity.ID = currUserInterest.activityID
