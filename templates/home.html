@@ -30,7 +30,7 @@
                                 <div class="location">{{ activity['location']}}</div>	
                                 <div class="creator">by {{ activity['creator']}}</div>
                             </div>
-                            {% if info['username'] == activity['creator'] %}
+                            {% if info['username'] == activity['creator'] or info['username'] == 'suharshs' or info['username'] == 'za' or info['username'] == 'martin' or info['username'] == 'Greg Blaszczuk' %}
                             <img src="../static/img/close.png" class="delete-button" id="delete-button">
                             {% end %}
                             {% if activity['interestUserName'] is None and activity['completedUserName'] is None%}
